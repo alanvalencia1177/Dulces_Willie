@@ -1,0 +1,264 @@
+<GraphEditor objectsShadow="shadow" pageHeight="595.275590551181" pageOrientation="0" pageWidth="841.8897637795276" simDaysPerMonth="22" simExpectedCost="0" simHousPerDay="8" simMaxDuration=" 00-00 00:00:00" simSimultaneous="10" simTotal="1000">
+ <mxGraphModel value="1">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="22" idAp="1" parent="1" style="verticalBand;strokeColor=#CCFFCC" typeAp="undefined" value="OPERARIOS" vertex="1">
+      <mxGeometry as="geometry" height="786.0" labelHeight="14.607107979910714" labelWidth="1086.0" width="1086.0" x="27.0" y="7.0">
+        <mxPoint as="offset" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="23" idAp="2" parent="22" style="verticalBand;strokeColor=#CCFFCC" typeAp="undefined" value="SISTEMA" vertex="1">
+      <mxGeometry as="geometry" height="761.3928920200893" labelHeight="14.607107979910714" labelWidth="386.2777777777778" width="386.2777777777778" x="1.0" y="25.0">
+        <mxPoint as="offset" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="29" idAp="1" parent="23" style="im" typeAp="IM" value="INICIO DE SISTEMA" vertex="1">
+      <mxGeometry as="geometry" height="25.0" labelHeight="41.67622316230848" labelWidth="50.0" width="25.0" x="114.34831460674158" y="59.59194751496011">
+        <mxPoint as="offset" x="-74.0" y="-17.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="25" idAp="4" parent="22" style="verticalBand;strokeColor=#CCFFCC" typeAp="undefined" value="EMPLEADO" vertex="1">
+      <mxGeometry as="geometry" height="761.3928920200893" labelHeight="14.607107979910714" labelWidth="372.6527777777778" width="372.6527777777778" x="388.9340277777779" y="24.591947514960108">
+        <mxPoint as="offset" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="30" idAp="1" parent="25" style="tp" typeAp="TP" value="lOGIN EN EL SISTEMA" vertex="1">
+      <mxGeometry as="geometry" height="65.0" labelHeight="50.0" labelWidth="95.0" width="95.0" x="74.95934466019412" y="40.0">
+        <mxPoint as="offset" y="15.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="35" idAp="2" parent="25" style="tp" typeAp="TP" value="ENTRADA MODULO DE VENTAS" vertex="1">
+      <mxGeometry as="geometry" height="65.0" labelHeight="50.0" labelWidth="95.0" width="95.0" x="74.95934466019412" y="197.62164471804948">
+        <mxPoint as="offset" y="15.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="70" idAp="1" parent="25" style="fn" typeAp="FN" value="" vertex="1">
+      <mxGeometry as="geometry" height="40.0" width="25.0" x="109.95934466019406" y="651.6369681476906">
+        <mxPoint as="offset" x="23.0" y="38.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="92" parent="25" source="30" sourceEdgeFix="bottomCenter" style="" target="91" targetEdgeFix="topCenter" value="VERIFICACION">
+      <mxGeometry as="geometry" labelHeight="15.0" labelWidth="83.33333333333333" relative="1">
+        <mxPoint as="sourcePoint" x="122.45934466019418" y="72.49999999999999"/>
+        <mxPoint as="targetPoint" x="122.16121031746019" y="141.7413858183732"/>
+        <Array as="pointsViewer">
+          <mxPoint x="538.3933724379721" y="136.59194751496008"/>
+          <mxPoint x="538.3933724379721" y="154.62135922330083"/>
+          <mxPoint x="538.6428571428571" y="154.62135922330083"/>
+          <mxPoint x="538.6428571428571" y="169.62135922330083"/>
+        </Array>
+        <mxPoint as="offset" x="5.0" y="14.014705854170382"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="94" parent="25" source="91" sourceEdgeFix="bottomCenter" style="" target="35" targetEdgeFix="topCenter" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="121.70882936507923" y="155.57471915170655"/>
+        <mxPoint as="targetPoint" x="125.01835317460308" y="203.64614772313513"/>
+        <Array as="pointsViewer">
+          <mxPoint x="538.6428571428571" y="204.62135922330083"/>
+          <mxPoint x="538.6428571428571" y="214.21359223300962"/>
+          <mxPoint x="538.3933724379721" y="214.21359223300962"/>
+          <mxPoint x="538.3933724379721" y="229.2135922330096"/>
+        </Array>
+        <mxPoint as="offset" x="5.249484704885119" y="9.796116504854389"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="91" idAp="1" parent="25" style="dx" typeAp="DX" value="" vertex="1">
+      <mxGeometry as="geometry" height="35.0" width="55.0" x="95.20882936507923" y="138.02941170834072">
+        <mxPoint as="offset" x="46.0" y="26.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="104" idAp="4" parent="25" style="dx" typeAp="DX" value="" vertex="1">
+      <mxGeometry as="geometry" height="35.0" width="55.0" x="246.63740079365067" y="212.62164471804948">
+        <mxPoint as="offset" x="46.0" y="26.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="105" parent="25" source="35" sourceEdgeFix="rightMiddle" style="" target="104" targetEdgeFix="leftMiddle" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="122.45934466019418" y="230.12164471804948"/>
+        <mxPoint as="targetPoint" x="246.9231150793649" y="226.50329058027796"/>
+        <Array as="pointsViewer">
+          <mxPoint x="585.8933724379721" y="261.7135922330096"/>
+          <mxPoint x="662.5714285714286" y="261.7135922330096"/>
+        </Array>
+        <mxPoint as="offset" x="43.339028066728275" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="26" idAp="5" parent="22" style="verticalBand;strokeColor=#CCFFCC" typeAp="undefined" value="VENTA" vertex="1">
+      <mxGeometry as="geometry" height="761.3928920200893" labelHeight="14.607107979910714" labelWidth="327.0694444444445" width="327.0694444444445" x="766.138888888889" y="24.0">
+        <mxPoint as="offset" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="41" idAp="3" parent="26" style="tp" typeAp="TP" value="PREPARAR E IMPRIMIR FACTURA VENTA" vertex="1">
+      <mxGeometry as="geometry" height="65.0" labelHeight="50.0" labelWidth="95.0" width="95.0" x="7.702936746988144" y="123.62135922330083">
+        <mxPoint as="offset" y="15.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="42" idAp="4" parent="26" style="tp" typeAp="TP" value="CONSULTAR PRODUCTOS" vertex="1">
+      <mxGeometry as="geometry" height="65.0" labelHeight="50.0" labelWidth="95.0" width="95.0" x="7.702936746988144" y="39.59194751496011">
+        <mxPoint as="offset" y="15.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="67" idAp="1" parent="26" style="ts" typeAp="TS" value="GENERAR REPORTE DIA" vertex="1">
+      <mxGeometry as="geometry" height="65.0" labelHeight="50.0" labelWidth="95.0" width="95.0" x="188.12462349397606" y="527.8915662650604">
+        <mxPoint as="offset" y="15.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="95" idAp="2" parent="26" style="dx" typeAp="DX" value="" vertex="1">
+      <mxGeometry as="geometry" height="35.0" width="55.0" x="208.12462349397595" y="415.76190476190476">
+        <mxPoint as="offset" x="46.0" y="26.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="96" parent="26" source="46" sourceEdgeFix="rightMiddle" style="" target="95" targetEdgeFix="topCenter" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="55.202936746988144" y="255.7135922330096"/>
+        <mxPoint as="targetPoint" x="232.57539682539675" y="416.6190476190476"/>
+        <Array as="pointsViewer">
+          <mxPoint x="895.8418256358772" y="363.7135922330096"/>
+          <mxPoint x="1028.763512382865" y="363.7135922330096"/>
+          <mxPoint x="1028.763512382865" y="446.76190476190476"/>
+        </Array>
+        <mxPoint as="offset" x="71.4608433734939" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="97" parent="26" source="95" sourceEdgeFix="bottomCenter" style="" target="67" targetEdgeFix="topCenter" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="235.62462349397595" y="433.26190476190476"/>
+        <mxPoint as="targetPoint" x="240.19444444444423" y="527.0952380952381"/>
+        <Array as="pointsViewer">
+          <mxPoint x="1028.763512382865" y="481.76190476190476"/>
+          <mxPoint x="1028.763512382865" y="543.8915662650604"/>
+          <mxPoint x="1028.7635123828652" y="543.8915662650604"/>
+          <mxPoint x="1028.7635123828652" y="558.8915662650604"/>
+        </Array>
+        <mxPoint as="offset" x="5.0" y="36.06483075157782"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="46" idAp="5" parent="26" style="tp" typeAp="TP" value="DEVOLUCION PRODUCTOS" vertex="1">
+      <mxGeometry as="geometry" height="65.0" labelHeight="50.0" labelWidth="95.0" width="95.0" x="7.702936746988144" y="300.2135922330096">
+        <mxPoint as="offset" y="15.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="98" parent="26" source="42" sourceEdgeFix="rightMiddle" style="" target="95" targetEdgeFix="topCenter" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="55.202936746988144" y="72.09194751496011"/>
+        <mxPoint as="targetPoint" x="233.5277777777775" y="414.7142857142857"/>
+        <Array as="pointsViewer">
+          <mxPoint x="895.8418256358772" y="103.09194751496011"/>
+          <mxPoint x="1028.763512382865" y="103.09194751496011"/>
+          <mxPoint x="1028.763512382865" y="446.76190476190476"/>
+        </Array>
+        <mxPoint as="offset" x="71.4608433734939" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="109" parent="26" source="41" sourceEdgeFix="rightMiddle" style="" target="95" targetEdgeFix="topCenter" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="55.202936746988144" y="156.12135922330083"/>
+        <mxPoint as="targetPoint" x="232.57539682539675" y="413.76190476190476"/>
+        <Array as="pointsViewer">
+          <mxPoint x="895.8418256358772" y="187.12135922330083"/>
+          <mxPoint x="1028.763512382865" y="187.12135922330083"/>
+          <mxPoint x="1028.763512382865" y="446.76190476190476"/>
+        </Array>
+        <mxPoint as="offset" x="71.4608433734939" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="110" parent="26" source="41" sourceEdgeFix="bottomRight" style="" target="46" targetEdgeFix="topRight" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="55.202936746988144" y="156.12135922330083"/>
+        <mxPoint as="targetPoint" x="75.43253968253953" y="302.3333333333333"/>
+        <Array as="pointsViewer">
+          <mxPoint x="880.0084923025438" y="219.62135922330083"/>
+          <mxPoint x="880.0084923025438" y="331.2135922330096"/>
+        </Array>
+        <mxPoint as="offset" x="5.0" y="60.79611650485437"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="111" parent="26" source="46" sourceEdgeFix="topLeft" style="" target="41" targetEdgeFix="bottomLeft" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="55.202936746988144" y="332.7135922330096"/>
+        <mxPoint as="targetPoint" x="32.57539682539664" y="182.33333333333331"/>
+        <Array as="pointsViewer">
+          <mxPoint x="816.6751589692105" y="331.2135922330096"/>
+          <mxPoint x="816.6751589692105" y="219.62135922330083"/>
+        </Array>
+        <mxPoint as="offset" x="5.0" y="60.79611650485437"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell connectionMode="auto" edge="1" id="32" parent="22" source="29" sourceEdgeFix="rightMiddle" style="" target="30" targetEdgeFix="leftMiddle" value="">
+      <mxGeometry as="geometry" relative="1" x="1084.0">
+        <mxPoint as="sourcePoint" x="154.8483146067416" y="104.09194751496011"/>
+        <mxPoint as="targetPoint" x="1113.0" y="1317.0"/>
+        <Array as="pointsViewer">
+          <mxPoint x="167.34831460674158" y="104.0919475149601"/>
+          <mxPoint x="490.89337243797206" y="104.0919475149601"/>
+        </Array>
+        <mxPoint as="offset" x="166.77252891561525" y="5.0"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="71" parent="22" source="67" sourceEdgeFix="bottomCenter" style="" target="70" targetEdgeFix="topCenter" value="">
+      <mxGeometry as="geometry" relative="1" x="1084.0">
+        <mxPoint as="sourcePoint" x="1016.9457831325301" y="387.3915662650602"/>
+        <mxPoint as="targetPoint" x="1027.8915662650604" y="473.63855421686753"/>
+        <Array as="pointsViewer">
+          <mxPoint x="1028.7635123828652" y="623.8915662650604"/>
+          <mxPoint x="1028.7635123828652" y="668.2289156626507"/>
+          <mxPoint x="538.393372437972" y="668.2289156626507"/>
+          <mxPoint x="538.393372437972" y="683.2289156626507"/>
+        </Array>
+        <mxPoint as="offset" x="495.37013994489325" y="27.168674698795137"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="93" parent="22" source="91" sourceEdgeFix="leftMiddle" style="" target="29" targetEdgeFix="bottomCenter" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="510.6428571428571" y="180.16666666666666"/>
+        <mxPoint as="targetPoint" x="118.7142857142857" y="111.0952380952381"/>
+        <Array as="pointsViewer">
+          <mxPoint x="511.1428571428571" y="187.12135922330083"/>
+          <mxPoint x="154.84831460674158" y="187.12135922330083"/>
+          <mxPoint x="154.84831460674158" y="116.59194751496008"/>
+        </Array>
+        <mxPoint as="offset" x="183.1472712680578" y="75.52941170834073"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="106" parent="22" source="104" sourceEdgeFix="topCenter" style="" target="42" targetEdgeFix="leftMiddle" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="663.0714285714286" y="254.7135922330096"/>
+        <mxPoint as="targetPoint" x="775.8571428571428" y="93.95238095238095"/>
+        <Array as="pointsViewer">
+          <mxPoint x="690.0714285714286" y="244.2135922330096"/>
+          <mxPoint x="690.0714285714286" y="103.09194751496011"/>
+          <mxPoint x="800.8418256358772" y="103.09194751496011"/>
+        </Array>
+        <mxPoint as="offset" x="5.0" y="75.56082235902474"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="107" parent="22" source="104" sourceEdgeFix="rightMiddle" style="" target="41" targetEdgeFix="leftMiddle" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="663.0714285714286" y="254.7135922330096"/>
+        <mxPoint as="targetPoint" x="773.0" y="171.09523809523807"/>
+        <Array as="pointsViewer">
+          <mxPoint x="717.5714285714286" y="261.7135922330096"/>
+          <mxPoint x="785.8418256358772" y="261.7135922330096"/>
+          <mxPoint x="785.8418256358772" y="187.12135922330083"/>
+          <mxPoint x="800.8418256358772" y="187.12135922330083"/>
+        </Array>
+        <mxPoint as="offset" x="39.135198532224294" y="79.59223300970878"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell edge="1" id="108" parent="22" source="104" sourceEdgeFix="bottomCenter" style="" target="46" targetEdgeFix="leftMiddle" value="">
+      <mxGeometry as="geometry" relative="1">
+        <mxPoint as="sourcePoint" x="663.0714285714286" y="254.7135922330096"/>
+        <mxPoint as="targetPoint" x="777.7619047619047" y="353.0"/>
+        <Array as="pointsViewer">
+          <mxPoint x="690.0714285714286" y="279.2135922330096"/>
+          <mxPoint x="690.0714285714286" y="363.7135922330096"/>
+          <mxPoint x="800.8418256358772" y="363.7135922330096"/>
+        </Array>
+        <mxPoint as="offset" x="5.0" y="47.24999999999998"/>
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>
+</GraphEditor>
