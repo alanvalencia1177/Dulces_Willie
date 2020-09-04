@@ -10,15 +10,15 @@
             <tr>
             
                 <td >
-                   <a href="Controlador.php?Ruta=FormInsertarCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?Ruta=FormInsertarCargo"> <img src="../../Imagenes/Cargo.png" width="240" height="240" ></a>
 
                 </td>
                 <td>
-                   <a href="Controlador.php?Ruta=FormConsultarCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?Ruta=FormConsultarCargo"> <img src="../../Imagenes/Cargo.png" width="240" height="240" ></a>
 
                 </td>
                 <td>
-                   <a href="Controlador.php?Ruta=FormActualizarCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?Ruta=FormActualizarCargo"> <img src="../../Imagenes/Cargo.png" width="240" height="240"></a>
 
                 </td>
                 

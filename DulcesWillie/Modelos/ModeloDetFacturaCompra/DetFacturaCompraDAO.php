@@ -35,6 +35,7 @@ class DetFactCompraDAO extends MyCon
             $ListarDetFactCompra[]=$Registro;
         }
         //Cerramos la conexion 
+    
         $this->CierreConexion();
         //Retornamos el array
         return $ListarDetFactCompra;

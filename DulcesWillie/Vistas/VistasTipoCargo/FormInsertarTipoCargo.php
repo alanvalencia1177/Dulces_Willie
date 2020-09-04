@@ -12,6 +12,12 @@
      $Conteo = count($Resul);
  }
 
+ /*if( isset($_SESSION['Resul1']))
+ {
+     $Resul1 = $_SESSION['Resul1'];
+     //Definimos una varuable que me va a contar o servir de contador
+     $Conteo1 = count($Resul1);
+ }*/
 ?>
         <center>
             <div>
@@ -79,14 +85,14 @@
                 </thead>
                  <tbody>
                  <?php
-                        //Hacemos un ciclo for para llenar el combo
+                        //Hacemos un ciclo for para llenar la tabla
                         for($j=0; $j<$Conteo; $j++)
                         {
                 ?>
                             <tr>
                                 <td><?php echo $Resul[$j]->IdCargo ?></td>  
                                 <td><?php echo $Resul[$j]->NombreCargo ?></td>  
-                                <td><?php echo $Resul[$j]->DescripcionCargo ?></td>
+                                <td><?php echo $Resul[$j]->IdCargo ?></td>
                             </tr> 
                  <?php } ?>            
                     </tbody>
