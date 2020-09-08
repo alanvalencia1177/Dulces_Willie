@@ -96,7 +96,7 @@ class CargoDAO extends MyCon
 
     public function insertarTipoCargo($registro) {
         try {
-            $query = "INSERT INTO TipoCargo ";
+            $query = "INSERT INTO tipocargo ";
             $query .= " (IdTipoCargo, NombreTipoCargo, Cargo_IdCargo) ";
             $query .= " VALUES";
             $query .= "(:IdTipoCargo , :NombreTipoCargo , :Cargo_IdCargo); ";

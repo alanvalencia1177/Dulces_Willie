@@ -3,10 +3,10 @@
 include_once PATH . 'Modelos/ModeloCargo/CargoDAO.php';
 class CargoControlador {
     //Definimos lavariablesque se usaran 
-    private $Datos;
+    private $datos;
 //    Definimos el constructor de la clase
-    public function __construct($Datos) {
-        $this->Datos = $Datos;
+    public function __construct($datos) {
+        $this->datos = $datos;
         $this->CargoControlador();
         
     }
@@ -14,21 +14,21 @@ class CargoControlador {
     public function CargoControlador() {
         //Hacemos un switch case para definir el comportamiento
         //y le damos el valor que viene por la peticion de la vista
-        switch ($this->Datos['Ruta']) {
+        switch ($this->datos['ruta']) {
             case "MenuCargo":
-                header("Location: Principal.php?Contenido=Vistas/VistasCargo/MenuCargo.php");
+                header("Location: Principal.php?contenido=Vistas/VistasCargo/MenuCargo.php");
                 break;
             case "FormInsertarCargo":
-                header("Location: Principal.php?Contenido=Vistas/VistasCargo/FormInsertarCargo.php");
+                header("Location: Principal.php?contenido=Vistas/VistasCargo/FormInsertarCargo.php");
                 break;
             case "FormConsultarCargo":
-                header("Location: Principal.php?Contenido=Vistas/VistasCargo/FormConsultarCargo.php");
+                header("Location: Principal.php?contenido=Vistas/VistasCargo/FormConsultarCargo.php");
                 break;
             case "FormActualizarCargo":
-                header("Location: Principal.php?Contenido=Vistas/VistasCargo/FormActualizarCargo.php");
+                header("Location: Principal.php?contenido=Vistas/VistasCargo/FormActualizarCargo.php");
                 break;
             case "MenuTipoCargo":
-                header("Location: Principal.php?Contenido=Vistas/VistasTipoCargo/MenuTipoCargo.php");
+                header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/MenuTipoCargo.php");
                 break;
             case "FormInsertarTipoCargo":
                
@@ -52,30 +52,30 @@ class CargoControlador {
                 //Limpiamos
                 $Resul1 = null;
 */
-                header("Location: Principal.php?Contenido=Vistas/VistasTipoCargo/FormInsertarTipoCargo.php");
+                header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/FormInsertarTipoCargo.php");
                 break;
             case "FormActualizarTipoCargo":
-                header("Location: Principal.php?Contenido=Vistas/VistasTipoCargo/FormActualizarTipoCargo.php");
+                header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/FormActualizarTipoCargo.php");
                 break;
             case "InsertarTipoCargo":
                 
                     //Instanciamos la clase 
                     $BuscarTipo =new CargoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASENIA_BD);
                     //Lammamos al metodo que vammos a usar
-                    $Existe = $BuscarTipo->seleccionarNombreCargo($this->Datos['NombreTipoCargo']);
+                    $Existe = $BuscarTipo->seleccionarNombreCargo($this->datos['NombreTipoCargo']);
                     //Hacemos una condicion para valodar
                     if(!$Existe['exitoSeleccionId']){
                     //Instanciamos la clase que vamosa usar
                     $InsertarTipo = new CargoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASENIA_BD);
                     //Llamamos al metod o de la clase instanciada y le damos los datos 
-                    $Result = $InsertarTipo->insertarTipoCargo($this->Datos);
+                    $Result = $InsertarTipo->insertarTipoCargo($this->datos);
                     //DEfinimos una variable la cual nos verificara si se hizo la insercion 
                     $ExitosaInsercion = $InsertarTipo['Inserto'];
                     $ResultadoInsertado = $InsertarTipo['resultado'];
                     //abrimos sesion
                     session_start();
-                    $_SESSION['Mensaje']="La insercion fue exitosa " .$this->Datos['NombreTipoCargo'].$ResultadoInsertado;
-                    header("Location: Principal.php?Contenido=Vistas/VistasTipoCargo/FormInsertarTipoCargo.php");
+                    $_SESSION['Mensaje']="La insercion fue exitosa " .$this->datos['NombreTipoCargo'].$ResultadoInsertado;
+                    header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/FormInsertarTipoCargo.php");
                     } 
                     else {
                         session_start();

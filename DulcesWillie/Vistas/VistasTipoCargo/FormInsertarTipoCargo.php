@@ -23,7 +23,7 @@
             <div>
                 <fieldset>
                     <legend>Formulario tipo de cargo</legend>
-                    <form action="Controlador.php?Ruta=InsertarTipoCargo" method="POST">
+                    <form action="Controlador.php?ruta=InsertarTipoCargo" method="POST">
                         <table class="table table-responsive" id="tabla" border="1" >
                             <tr>
                            

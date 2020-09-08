@@ -10,11 +10,11 @@
             <tr>
             
                 <td >
-                   <a href="Controlador.php?Ruta=FormInsertarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?ruta=FormInsertarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
 
                 </td>
                 <td>
-                   <a href="Controlador.php?Ruta=FormActualizarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?ruta=FormActualizarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
 
                 </td>
                 <td>

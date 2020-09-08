@@ -61,7 +61,7 @@ class ProveedorControlador {
                
                 
 
-                header("location:principal.php?contenido=/Vistas/VistasProveedor/ListaRegistrosProveedor.php");
+                header("location:principal.php?contenido=Vistas/VistasProveedor/ListaRegistrosProveedor.php");
                 break;
 
             case "actualizarProveedor":

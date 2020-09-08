@@ -18,12 +18,12 @@ class ControladorPrincipal {
 //        echo "</pre>";
         //Hacemos una condicion para verificar 
         //el metodo en el que lo esta enviando 
-        if(!empty($_POST) && isset($_POST['ruta']))
+        if(!empty($_POST) && isset($_POST["ruta"]))
         {
             //Lo cargamos en el erray
             $this->datos = $_POST;
         }
-        if(!empty($_GET) && isset($_GET['ruta']))
+        if(!empty($_GET) && isset($_GET["ruta"]))
         {
             //Lo cargamos en el erray
             $this->datos = $_GET;
@@ -41,34 +41,34 @@ class ControladorPrincipal {
         switch($this->datos['ruta'])
         {
             case "MostrarDfc":
-                 $Dfc = new DetFacturaCompraControlador ($this->Datos);
+                 $Dfc = new DetFacturaCompraControlador ($this->datos);
             break;
             case "MenuCargo":
-                $Cargo = new CargoControlador($this->Datos);    
+                $Cargo = new CargoControlador($this->datos);    
                 break;
             case "FormInsertarCargo":
                 
-                $Cargo = new CargoControlador($this->Datos);    
+                $Cargo = new CargoControlador($this->datos);    
                 break;
             case "FormConsultarCargo":
-                $Cargo = new CargoControlador($this->Datos);    
+                $Cargo = new CargoControlador($this->datos);    
                 break;
             case "FormActualizarCargo":
-                $Cargo = new CargoControlador($this->Datos);    
+                $Cargo = new CargoControlador($this->datos);    
                 break;
             case "MenuTipoCargo":
-                $Cargo = new CargoControlador($this->Datos);    
+                $Cargo = new CargoControlador($this->datos);    
                 break;
             
             case "FormInsertarTipoCargo":
             case "InsertarTipoCargo":  
                 //Hacemos una condicion praverificar que es loque me traerlavaribale
                 //del comportamiento
-                if($this->Datos['ruta'] == "InsertarTipoCargo")
+                if($this->datos['ruta'] == "InsertarTipoCargo")
                 {
                     //Insrancioms la clase de validaciones
                     $Validar = new Validaciones();
-                    $ErrorValidar = $Validar->ValidarTipoCargo($this->Datos);
+                    $ErrorValidar = $Validar->ValidarTipoCargo($this->datos);
                 }
                 //Hacemos una condicion pra saber si el validarnos arroja algun 
                 //Dato
@@ -82,13 +82,15 @@ class ControladorPrincipal {
                 }
                 else
                 {
-                   $Cargo = new CargoControlador($this->Datos);  
+                   $Cargo = new CargoControlador($this->datos);  
                 }
                 break;
             case "FormActualizarTipoCargo":
-                $Cargo = new CargoControlador($this->Datos);    
+                $Cargo = new CargoControlador($this->datos);    
                 break;
         
+
+                
             ///*****GESTIONANDO LA TABLA Proveedor********///            
          
             case "mostrarInsertarProveedor":

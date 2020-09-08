@@ -68,9 +68,9 @@ session_start();
         </a>
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="Controlador.php?Ruta=MenuCargo">Cargo</a>
-            <a class="collapse-item" href="Controlador.php?Ruta=MenuTipoCargo">Tipos de cargo</a>
-            <a class="collapse-item" href="Controlador.php?Ruta=MenuEmpleado">Empleado</a>
+            <a class="collapse-item" href="Controlador.php?ruta=MenuCargo">Cargo</a>
+            <a class="collapse-item" href="Controlador.php?ruta=MenuTipoCargo">Tipos de cargo</a>
+            <a class="collapse-item" href="Controlador.php?ruta=MenuEmpleado">Empleado</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Reportes Especiales Libros</h6>
             <a class="collapse-item" href="">R1 - T1</a>
@@ -88,7 +88,7 @@ session_start();
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Operaciones Proveedor</h6>
-            <a class="collapse-item" href="Controlador.php?Ruta=listarProveedor">Listar registros Proveedor</a>
+            <a class="collapse-item" href="Controlador.php?ruta=listarProveedor">Listar registros Proveedor</a>
             <a class="collapse-item" href="Controlador.php?ruta=InsertarProveedor">Agregar Registro proveedor</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Reportes Especiales Tabla 2</h6>
@@ -164,8 +164,8 @@ session_start();
                
                             //Hacemosunacondicion que nos permitira si tiene algo seteado 
                             //usando la funcion isset
-                            if (isset($_GET['Contenido'])) {
-                                include($_GET['Contenido']);
+                            if (isset($_GET['contenido'])) {
+                                include($_GET['contenido']);
                             }
 
                             ?>           

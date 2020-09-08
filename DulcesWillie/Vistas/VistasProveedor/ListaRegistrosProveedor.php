@@ -36,11 +36,11 @@ if (isset($_SESSION['listaDeProveedor'])) {
     </tbody>
 </table>
    
-<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
                 $(document).ready(function () {
                     $('#example').DataTable();
                 });
-</script>-->
+</script>
 <!--https://eldesvandejose.com/category/jquery/hacks-y-recursos/el-plugin-datatables-->
