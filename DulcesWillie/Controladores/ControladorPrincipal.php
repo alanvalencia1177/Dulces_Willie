@@ -1,13 +1,14 @@
 <?php
 //Incluimos la clase
 
-include_once PATH . 'Controladores\DetFacturaCompraControlador.php';
-include_once PATH . 'Controladores\CargoControlador.php';
-include_once PATH . 'Modelos\Validaciones.php';
+include_once PATH . 'Controladores/ProveedorControlador.php';
+include_once PATH . 'Controladores/CargoControlador.php';
+include_once PATH . 'Modelos/Validaciones.php';
+include_once PATH . 'Modelos/ModeloProveedor/ValidadorProveedor.php';
 
 class ControladorPrincipal {
      //Declaramos las variables que vamos a usar
-    private $Datos = array();
+    private $datos = array();
     //Declaramos el constructor
     public function __construct()
     {
@@ -17,25 +18,27 @@ class ControladorPrincipal {
 //        echo "</pre>";
         //Hacemos una condicion para verificar 
         //el metodo en el que lo esta enviando 
-        if(!empty($_POST) && isset($_POST['Ruta']))
+        if(!empty($_POST) && isset($_POST['ruta']))
         {
             //Lo cargamos en el erray
-            $this->Datos = $_POST;
+            $this->datos = $_POST;
         }
-        if(!empty($_GET) && isset($_GET['Ruta']))
+        if(!empty($_GET) && isset($_GET['ruta']))
         {
             //Lo cargamos en el erray
-            $this->Datos = $_GET;
+            $this->datos = $_GET;
         }
         //le damos los datos al control
-        $this->Control();
+        $this->control();
     }
     //Hacemos una funcion la cual no spermitira el manejo de las repuesats
-    public function Control()
+    public function control()
     {
-        //Hacemos un switch case el cual 
+       
+        
+                //Hacemos un switch case el cual 
         //Tendra el control dependiendo la peticion de la variable
-        switch($this->Datos['Ruta'])
+        switch($this->datos['ruta'])
         {
             case "MostrarDfc":
                  $Dfc = new DetFacturaCompraControlador ($this->Datos);
@@ -61,7 +64,7 @@ class ControladorPrincipal {
             case "InsertarTipoCargo":  
                 //Hacemos una condicion praverificar que es loque me traerlavaribale
                 //del comportamiento
-                if($this->Datos['Ruta'] == "InsertarTipoCargo")
+                if($this->Datos['ruta'] == "InsertarTipoCargo")
                 {
                     //Insrancioms la clase de validaciones
                     $Validar = new Validaciones();
@@ -86,9 +89,50 @@ class ControladorPrincipal {
                 $Cargo = new CargoControlador($this->Datos);    
                 break;
         
-            
+            ///*****GESTIONANDO LA TABLA Proveedor********///            
+         
+            case "mostrarInsertarProveedor":
+                case "insertarProveedor":
+                    if ($this->datos['ruta'] == "insertarProveedor") {
+                        $validarRegistro = new ValidadorProveedor();
+                        $erroresValidacion = $validarRegistro->validarFormularioProveedor($this->datos);
+                    }
+                    if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                        session_start();
+                        $_SESSION['erroresValidacion'] = $erroresValidacion;
+                        header("location:principal.php?contenido=Vistas/VistasProveedor/VistaInsertarProveedor.php");
+                    } else {
+                        $ProveedorControlador = new ProveedorControlador($this->datos);
+                    }
+                    break;
+                case "listarProveedor":
+                    $ProveedorControlador = new ProveedorControlador($this->datos);
+    
+                    break;
+                case "actualizarProveedor":
+                    
+                    $ProveedorControlador = new ProveedorControlador($this->datos);
+                    
+                    break;
+                case "confirmaActualizarProveedor":               
+                    if ($this->datos['ruta'] == "confirmaActualizarProveedor") {
+                        $validarRegistro = new ValidadorProveedor();
+                        $erroresValidacion = $validarRegistro->validarFormularioProveedor($this->datos);
+                    }
+                    if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                        session_start();
+                        $_SESSION['erroresValidacion'] = $erroresValidacion;
+                        header("location:principal.php?contenido=Vistas/VistasProveedor/vistaActualizarProveedor.php");
+                    } else {
+                        $ProveedorControlador = new ProveedorControlador($this->datos);
+                    }              
+                    break;
+                case "eliminarProveedor":
+                    $ProveedorControlador = new ProveedorControlador($this->datos);
+                    break;
         }
         
     }
     
 }
+?>

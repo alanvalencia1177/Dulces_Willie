@@ -70,7 +70,7 @@ session_start();
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="Controlador.php?Ruta=MenuCargo">Cargo</a>
             <a class="collapse-item" href="Controlador.php?Ruta=MenuTipoCargo">Tipos de cargo</a>
-            <a class="collapse-item" href="Controlador.php?Ruta=MenuEmpleado">Empelado</a>
+            <a class="collapse-item" href="Controlador.php?Ruta=MenuEmpleado">Empleado</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Reportes Especiales Libros</h6>
             <a class="collapse-item" href="">R1 - T1</a>
@@ -87,9 +87,9 @@ session_start();
         </a>
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Operaciones en  Tabla 2</h6>
-            <a class="collapse-item" href="">Listar registros Tabla 2</a>
-            <a class="collapse-item" href="">Agregar Registro Tabla 2</a>
+            <h6 class="collapse-header">Operaciones Proveedor</h6>
+            <a class="collapse-item" href="Controlador.php?Ruta=listarProveedor">Listar registros Proveedor</a>
+            <a class="collapse-item" href="Controlador.php?ruta=InsertarProveedor">Agregar Registro proveedor</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Reportes Especiales Tabla 2</h6>
             <a class="collapse-item" href="">R1 - T2</a>

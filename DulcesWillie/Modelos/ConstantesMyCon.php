@@ -12,5 +12,5 @@ define("CONTRASENIA_BD", ""); //se define una constante para la contraseña,de a
 /*Se definira la ruta en la cual se encuetra el 
 index de su proyecto a la ruta 'documentroor'*/
 
-define("PATH",$_SERVER['DOCUMENT_ROOT']."/"."TrabajoRepositorio"."/"."DulcesWillie"."/");
-echo PATH;
+define("PATH",$_SERVER['DOCUMENT_ROOT']."TrabajoRepositorio"."/"."DulcesWillie"."/");
+
