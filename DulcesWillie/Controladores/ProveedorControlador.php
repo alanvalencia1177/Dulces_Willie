@@ -17,15 +17,22 @@ class ProveedorControlador {
 
         switch ($this->datos['ruta']) {
            
+            
+                case 'mostrarInsertarProveedor':
+    
+                    /*                 * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */
+                    header("Location: principal.php?contenido=Vistas/VistasProveedor/vistaInsertarProveedor.php");
+    
+                    break;
            
-            case 'InsertarProveedor':
+            case 'insertarProveedor':
                 //Se instancia ProveedorDAO para insertar
                 $buscarProveedor = new ProveedorDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-//                echo "<pre>";
-//                print_r($ProveedorHallado);
-//                echo "</pre>";                
-                //Se consulta si existe ya el registro
+               //Se consulta si existe ya el registro
                 $ProveedorHallado = $buscarProveedor->seleccionarId(array($this->datos['IdProveedor']));
+    //                echo "<pre>";
+//                print_r($ProveedorHallado);
+//                echo "</pre>";                  
                 //Si no existe el libro en la base se procede a insertar ****            
                 if (!$ProveedorHallado['exitoSeleccionId']) {
                     $insertarProveedor = new ProveedorDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);

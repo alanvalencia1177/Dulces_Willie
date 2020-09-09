@@ -31,11 +31,13 @@ class ProveedorDAO extends MyCon {
 
     public function seleccionarId($sId) {
 
-        $planConsulta = "select * from proveedor p ";
-        $planConsulta .= " where p.IdProveedor= ? ;";
+        $planConsulta = "SELECT *";
+        $planConsulta .= " FROM proveedor p";
+        $planConsulta .= " WHERE p.IdProveedor = ? ";
 
-        $listar = $this->conexion->prepare($planConsulta);
+        $listar = $this->Conexion->prepare($planConsulta);
         $listar->execute(array($sId));
+        
 
         $registroEncontrado = array();
 
@@ -58,7 +60,7 @@ class ProveedorDAO extends MyCon {
             $query .= " VALUES";
             $query .= "(:IdProveedor , :NombreProveedor , :NitProveedor , :DescripcionProveedor ); ";
 
-            $inserta = $this->conexion->prepare($query);
+            $inserta = $this->Conexion->prepare($query);
 
             $inserta->bindParam(":IdProveedor", $registro['IdProveedor']);
             $inserta->bindParam(":NombreProveedor", $registro['NombreProveedor']);
@@ -67,7 +69,7 @@ class ProveedorDAO extends MyCon {
            
             $insercion = $inserta->execute();
 
-            $clavePrimariaConQueInserto = $this->conexion->lastInsertId();
+            $clavePrimariaConQueInserto = $this->Conexion->lastInsertId();
 
 
 

@@ -1,5 +1,18 @@
 <?php
 session_start();
+include_once 'modelos/ConstantesConexion.php';
+include_once PATH . 'controladores/ManejoSesiones/BloqueDeSeguridad.php';
+//
+//$seguridad = new BloqueDeSeguridad();
+//$seguridad->seguridad("login.php");
+
+
+
+if (isset($_SESSION['mensaje'])) {
+    $mensaje = $_SESSION['mensaje'];
+    echo "<script languaje='javascript'>alert('$mensaje')</script>";
+    unset($_SESSION['mensaje']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -89,7 +102,7 @@ session_start();
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Operaciones Proveedor</h6>
             <a class="collapse-item" href="Controlador.php?ruta=listarProveedor">Listar registros Proveedor</a>
-            <a class="collapse-item" href="Controlador.php?ruta=InsertarProveedor">Agregar Registro proveedor</a>
+            <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarProveedor">Agregar Registro proveedor</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Reportes Especiales Tabla 2</h6>
             <a class="collapse-item" href="">R1 - T2</a>

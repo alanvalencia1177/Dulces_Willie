@@ -21,25 +21,26 @@ class ValidadorProveedor {
                 case 'NombreProveedor':
 //                    $patronDocumento = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/";
 //                    $patronDocumento = "/^[^ ][0-9a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ- ]*$/";
-                    $patronDocumento = "//";
-                    if (!preg_match($patronDocumento, $value)) {
-                        $mensajesError['NombreProveedor']="*2-Formato/Dato incorrecto";
+                    $patronNombreProveedor = "//";
+                    if (!preg_match($patronNombreProveedor, $value)) {
+                        $mensajesError['NombreNombreProveedor']="*2-Formato/Dato incorrecto";
                     }
                     break;
-                case 'NitProveedor':
-//                    $patronDocumento = "/^[^ ][0-9a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ- ]*$/";
-                    $patronDocumento = "//";
-                    if (!preg_match($patronDocumento, $value)) {
-                        $mensajesError['NitProveedor']="*3-Formato/Dato incorrecto";
-                    }
-                    break;
+                    case 'NitProveedor':
+                        $patronNitProveedor = "/^[[:digit:]]+$/";
+                        if (!preg_match($patronNitProveedor, $value)) {
+                            $mensajesError['NitProveedor']="*3-Formato/Dato incorrecto";
+                        }
+                        break;
+    
                 case 'DescripcionProveedor':
-                    $patronDocumento = "/^[[:digit:]]+$/";
-                    if (!preg_match($patronDocumento, $value)) {
-                        $mensajesError['DescripcionProveedor']="*1-Formato/Dato incorrecto";
+//                    $patronDocumento = "/^[^ ][0-9a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ- ]*$/";
+                    $patronDescripcionProveedor = "//";
+                    if (!preg_match($patronDescripcionProveedor, $value)) {
+                        $mensajesError['DescripcionProveedor']="*4-Formato/Dato incorrecto";
                     }
                     break;
-
+              
             }
         }
         /*         * *********************************************** */
