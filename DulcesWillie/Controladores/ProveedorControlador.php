@@ -29,15 +29,16 @@ class ProveedorControlador {
                 //Se instancia ProveedorDAO para insertar
                 $buscarProveedor = new ProveedorDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
                //Se consulta si existe ya el registro
-                $ProveedorHallado = $buscarProveedor->seleccionarId(array($this->datos['IdProveedor']));
+                $ProveedorHallado = $buscarProveedor->seleccionarId($this->datos['IdProveedor']);
     //                echo "<pre>";
 //                print_r($ProveedorHallado);
 //                echo "</pre>";                  
                 //Si no existe el libro en la base se procede a insertar ****            
                 if (!$ProveedorHallado['exitoSeleccionId']) {
-                    $insertarProveedor = new ProveedorDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                    $insertarProveedor = new ProveedorDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);                   
                     $insertoProveedor = $insertarProveedor->insertar($this->datos);  //inserción de los campos en la tabla proveedor 
-                    $exitoInsercionProveedor = $insertoProveedor['inserto']; //indica si se logró inserción de los campos en la tabla Proveedor
+                    $exitoInsercionProveedor = $insertoProveedor['inserto'];
+                     //indica si se logró inserción de los campos en la tabla Proveedor
                     $resultadoInsercionProveedor = $insertoProveedor['resultado'];                //Traer el id con que quedó el Proveedor de lo contrario la excepción o fallo  
 
                     session_start();

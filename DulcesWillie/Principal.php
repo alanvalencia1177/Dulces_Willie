@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'modelos/ConstantesConexion.php';
-include_once PATH . 'controladores/ManejoSesiones/BloqueDeSeguridad.php';
+include_once 'modelos/ConstantesMyCon.php';
+
 //
 //$seguridad = new BloqueDeSeguridad();
 //$seguridad->seguridad("login.php");

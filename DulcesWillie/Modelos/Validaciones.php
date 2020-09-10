@@ -3,11 +3,11 @@
 class Validaciones
 {
     //Hacenmos una funcion
-    public function ValidarTipoCargo($Datos)
+    public function ValidarTipoCargo($datos)
     {
         //Variables que vamosa usar
         $MensajeError = NULL;
-        $DatosViejos = NULL;
+        $datosViejos = NULL;
         $MarcaCampo = NULL;
 
         /*----------------------------------------*/
@@ -16,9 +16,9 @@ class Validaciones
         /*----------------------------------------*/
         //Hacemos una condicion para preguntar que me traen
         if (is_null($MensajeError)) {
-            return array('DatosViejos' => $DatosViejos, '$MensajeError' => $MensajeError, 'MarcaCampo' => $MarcaCampo);
+            return array('datosViejos' => $datosViejos, '$MensajeError' => $MensajeError, 'MarcaCampo' => $MarcaCampo);
         } else {
-            $DatosViejos = NULL;
+            $datosViejos = NULL;
             return FALSE;
         }
     }

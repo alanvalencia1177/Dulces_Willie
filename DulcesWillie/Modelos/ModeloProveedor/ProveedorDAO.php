@@ -43,8 +43,7 @@ class ProveedorDAO extends MyCon {
 
         while ($registro = $listar->fetch(PDO::FETCH_OBJ)) {
             $registroEncontrado[] = $registro;
-        }
-
+        }  
         $this->cierreConexion();
         if (!empty($registroEncontrado)) {
             return ['exitoSeleccionId' => TRUE, 'registroEncontrado' => $registroEncontrado];
@@ -90,7 +89,7 @@ class ProveedorDAO extends MyCon {
 
             if (isset($IdProveedor)) {
                 $actualizar = "UPDATE proveedor SET NombreProveedor= ? , NitProveedor = ? , DescripcionProveedor = ?  WHERE IdProveedor= ? ;";
-                $actualizacion = $this->conexion->prepare($actualizar);
+                $actualizacion = $this->Conexion->prepare($actualizar);
                 $actualizacion = $actualizacion->execute(array($NombreProveedor, $NitProveedor, $DescripcionProveedor,  $IdProveedor));
                 return ['actualizacion' => $actualizacion, 'mensaje' => "Actualización realizada."];
             }
@@ -102,8 +101,8 @@ class ProveedorDAO extends MyCon {
     public function eliminar($sId = array()) {//Recibe llave primaria a eliminar
         
         $planConsulta = "delete from proveedor ";
-        $planConsulta .= " where IdProveedor= :IdProveedor ;";
-        $eliminar = $this->conexion->prepare($planConsulta);
+        $planConsulta .= " where IdProveedor = :IdProveedor ;";
+        $eliminar = $this->Conexion->prepare($planConsulta);
         $eliminar->bindParam(':IdProveedor', $sId[0], PDO::PARAM_INT);
         $resultado = $eliminar->execute();
 
@@ -123,7 +122,7 @@ class ProveedorDAO extends MyCon {
 
             if (isset($sId[0])) {
                 $actualizar = "UPDATE proveedor SET estado = ? WHERE IdProveedor= ? ;";
-                $actualizacion = $this->conexion->prepare($actualizar);
+                $actualizacion = $this->Conexion->prepare($actualizar);
                 $actualizacion = $actualizacion->execute(array($cambiarEstado, $sId[0]));
                 return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Inactivado."];
             }
@@ -139,7 +138,7 @@ class ProveedorDAO extends MyCon {
 
             if (isset($sId[0])) {
                 $actualizar = "UPDATE proveedor SET estado = ? WHERE IdProveedor= ? ;";
-                $actualizacion = $this->conexion->prepare($actualizar);
+                $actualizacion = $this->Conexion->prepare($actualizar);
                 $actualizacion = $actualizacion->execute(array($cambiarEstado, $sId[0]));
                 return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Activado."];
             }

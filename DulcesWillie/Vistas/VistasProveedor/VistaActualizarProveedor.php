@@ -5,7 +5,7 @@ if (isset($_SESSION['mensaje'])) {
     unset($_SESSION['mensaje']);
 }
 if (isset($_SESSION['actualizarDatosProveedor'])) {
-    $actualizarDatosLibro = $_SESSION['actualizarDatosProveedor'];
+    $actualizarDatosProveedor = $_SESSION['actualizarDatosProveedor'];
     unset($_SESSION['actualizarProveedor']);
 }
 if (isset($_SESSION['erroresValidacion'])) {
@@ -23,7 +23,7 @@ if (isset($_SESSION['erroresValidacion'])) {
             <table>
                 <tr>
                     <td>
-                        <input class="form-control" placeholder="Id Proveedor" name="isbn" type="number" pattern="" required="required" autofocus readonly="readonly" 
+                        <input class="form-control" placeholder="Id Proveedor" name="IdProveedor" type="number" pattern="" required="required" autofocus readonly="readonly" 
                                value="<?php
                                if (isset($actualizarDatosProveedor->IdProveedor))
                                    echo $actualizarDatosProveedor->IdProveedor;
@@ -38,10 +38,10 @@ if (isset($_SESSION['erroresValidacion'])) {
                 </tr>
                 <tr>
                     <td>                
-                        <input class="form-control" placeholder="Nombre Proveedor" name="titulo" type="text"   required="required" 
+                        <input class="form-control" placeholder="Nombre Proveedor" name="NombreProveedor" type="text"   required="required" 
                                value="<?php
-                               if (isset($actualizarDatosLibro->NombreProveedor))
-                                   echo $actualizarDatosLibro->NombreProveedor;
+                               if (isset($actualizarDatosProveedor->NombreProveedor))
+                                   echo $actualizarDatosProveedor->NombreProveedor;
                                if (isset($erroresValidacion['datosViejos']['NombreProveedor']))
                                    echo $erroresValidacion['datosViejos']['NombreProveedor'];
                                if (isset($_SESSION['NombreProveedor']))
@@ -53,7 +53,7 @@ if (isset($_SESSION['erroresValidacion'])) {
                 </tr>
                 <tr>
                     <td>                  
-                        <input class="form-control" placeholder="Nit Proveedor" name="autor" type="text"  required="required" 
+                        <input class="form-control" placeholder="Nit Proveedor" name="NitProveedor" type="number"  required="required" 
                                value="<?php
                                if (isset($actualizarDatosProveedor->NitProveedor))
                                    echo $actualizarDatosProveedor->NitProveedor;
@@ -68,7 +68,7 @@ if (isset($_SESSION['erroresValidacion'])) {
                 </tr>                  
                 <tr>
                     <td>                  
-                        <input class="form-control" placeholder="Descripcion Proveedor" name="precio" type="number"  required="required" 
+                        <input class="form-control" placeholder="Descripcion Proveedor" name="DescripcionProveedor" type="text"  required="required" 
                                value="<?php
                                if (isset($actualizarDatosProveedor->DescripcionProveedor))
                                    echo $actualizarDatosProveedor->DescripcionProveedor;
