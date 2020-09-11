@@ -53,15 +53,24 @@ class ProveedorDAO extends MyCon {
     }
 
     public function insertar($registro) {
+        
+        
+        
         try {
-            $query = "INSERT INTO proveedor ";
-            $query .= " (p.IdProveedor,p.NombreProveedor,p.NitProveedor,p.DescripcionProveedor) ";
-            $query .= " VALUES";
-            $query .= "(:IdProveedor , :NombreProveedor , :NitProveedor , :DescripcionProveedor ); ";
+       // echo "<pre>";
+       // print_r($registro);
+       // echo "</pre>";
+       // exit();
 
+            $query = "INSERT INTO proveedor  ";
+            //$query .= " (p.IdProveedor,p.NombreProveedor,p.NitProveedor,p.DescripcionProveedor) ";
+            $query .= " (NombreProveedor,NitProveedor,DescripcionProveedor) ";
+            $query .= " VALUES";
+            //$query .= "(:IdProveedor , :NombreProveedor , :NitProveedor , :DescripcionProveedor ); ";
+            $query .= "( :NombreProveedor , :NitProveedor , :DescripcionProveedor ); ";
             $inserta = $this->Conexion->prepare($query);
 
-            $inserta->bindParam(":IdProveedor", $registro['IdProveedor']);
+            //$inserta->bindParam(":IdProveedor", NULL);
             $inserta->bindParam(":NombreProveedor", $registro['NombreProveedor']);
             $inserta->bindParam(":NitProveedor", $registro['NitProveedor']);
             $inserta->bindParam(":DescripcionProveedor", $registro['DescripcionProveedor']);
