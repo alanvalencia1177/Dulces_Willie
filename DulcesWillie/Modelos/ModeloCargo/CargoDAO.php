@@ -1,92 +1,49 @@
 <?php
-//include PATH . 'Modelos/MyCon.php';
-include_once PATH . 'Modelos/MyCon.php';
-//Definimosla clase 
-//Esta clase heredara los datos de l clase padre
-class CargoDAO extends MyCon
-{
-   //Declaramos el constructor como metodo el cual recibira los parametros 
-    //de la conexion
-    function __construct($Servidor,$Base,$Login,$PasswordBD)
-    {
-        //Atraves de Parent::__construct se le pasa alconstructor
-        //dela 'Clase padres' (MyCon) los parametros de la conexion
-        //que ha recibido la calse DAO
-        parent::__construct($Servidor,$Base,$Login,$PasswordBD);
+
+include_once PATH . 'modelos/MyCon.php';
+
+class CargoDAO extends MyCon {
+
+    public function __construct($servidor, $base, $loginBD, $passwordBD) {
+
+        parent::__construct($servidor, $base, $loginBD, $passwordBD);
     }
 
-    //Hacemos una funcion la cual seleccionara todos los registros
-    public function SeleccionarTodos()
-    { 
-        //Definimos una variable la cual tendra la sentencia MySQL
-        $Cargo ="Select * From Cargo";
-        //Declaramos una variable la cual Contendra la 
-        //la informacion que que tiene la variable "$DetFacturaCompra"
-        //Funcion prepare nos dara integridad segura de los datos que se estan enviando 
-        $RegCargo = $this->Conexion->prepare($Cargo);
-        //Ejecutamos la la variable 
-        $RegCargo->execute();
-        //Definimos un array vacio el cual nos guadara los datos que se le envien
-        $ListarCargo = array();
-        //Hacemos un ciclo para que nos cargue el array
-        while ($Registro = $RegCargo->fetch(PDO::FETCH_OBJ))
-        {
-            //Le damos los datos al array que creamos anteriormente
-            $ListarCargo[]=$Registro;
+    public function seleccionarTodos() {
+
+        $planConsulta = "SELECT c.IdCargo,c.NombreCargo,c.DescripcionCargo";
+        $planConsulta .= " FROM cargo c";
+        $planConsulta .= " ORDER BY c.IdCargo ASC ";
+
+        $registrosCargo = $this->Conexion->prepare($planConsulta);
+        $registrosCargo->execute(); //Ejecución de la consulta 
+
+        $listadoRegistrosCargo = array();
+
+        while ($registro = $registrosCargo->fetch(PDO::FETCH_OBJ)) {
+            $listadoRegistrosCargo[] = $registro;
         }
-        //Cerramos la conexion 
-        $this->CierreConexion();
-        //Retornamos el array
-        return $ListarCargo;
 
-    }
-    //Seleccionar todos Tabla
-    //Hacemos una funcion la cual seleccionara todos los registros
-    public function SeleccionarTodosTipoCargo()
-    { 
-        //Definimos una variable la cual tendra la sentencia MySQL
-        $TipoCargo ="Select * From TipoCargo";
-        //Declaramos una variable la cual Contendra la 
-        //la informacion que que tiene la variable "$DetFacturaCompra"
-        //Funcion prepare nos dara integridad segura de los datos que se estan enviando 
-        $RegTipoCargo = $this->Conexion->prepare($TipoCargo);
-        //Ejecutamos la la variable 
-        $RegTipoCargo->execute();
-        //Definimos un array vacio el cual nos guadara los datos que se le envien
-        $ListarTipoCargo = array();
-        //Hacemos un ciclo para que nos cargue el array
-        while ($Registro = $RegTipoCargo->fetch(PDO::FETCH_OBJ))
-        {
-            //Le damos los datos al array que creamos anteriormente
-            $ListarTipoCargo[]=$Registro;
-        }
-        //Cerramos la conexion 
-        $this->CierreConexion();
-        //Retornamos el array
-        return $ListarTipoCargo;
+        $this->cierreConexion();
 
+        return $listadoRegistrosCargo;
     }
 
+    public function seleccionarId($sId) {
 
-
-
-
-
-
-    public function seleccionarNombreCargo($NombreCargo = array()) {
-
-        $planConsulta = "select * from Cargo c ";
-        $planConsulta .= " where c.NombreCargo = ? ;";
+        $planConsulta = "select * from cargo c ";
+        $planConsulta .= " where c.IdCargo= ? ;";
 
         $listar = $this->Conexion->prepare($planConsulta);
-        $listar->execute(array($NombreCargo[0]));
+        $listar->execute(array($sId));
 
         $registroEncontrado = array();
 
         while ($registro = $listar->fetch(PDO::FETCH_OBJ)) {
             $registroEncontrado[] = $registro;
         }
-        $this->CierreConexion();
+
+        $this->cierreConexion();
         if (!empty($registroEncontrado)) {
             return ['exitoSeleccionId' => TRUE, 'registroEncontrado' => $registroEncontrado];
         } else {
@@ -94,28 +51,97 @@ class CargoDAO extends MyCon
         }
     }
 
-    public function insertarTipoCargo($registro) {
+    public function insertar($registro) {
         try {
-            $query = "INSERT INTO tipocargo ";
-            $query .= " (IdTipoCargo, NombreTipoCargo, Cargo_IdCargo) ";
+            $query = "INSERT INTO cargo ";
+            $query .= " (IdCargo, NombreCargo, DescripcionCargo) ";
             $query .= " VALUES";
-            $query .= "(:IdTipoCargo , :NombreTipoCargo , :Cargo_IdCargo); ";
+            $query .= "(:IdCargo , :NombreCargo , :DescripcionCargo ); ";
 
-            $inserta = $this->conexion->prepare($query);
+            $inserta = $this->Conexion->prepare($query);
 
-            $inserta->bindParam(":IdTipoCargo", $registro['IdTipoCargo']);
-            $inserta->bindParam(":NombreTipoCargo", $registro['NombreTipoCargo']);
-            $inserta->bindParam(":Cargo_IdCargo", $registro['Cargo_IdCargo']);
-           
+            $inserta->bindParam(":IdCargo", $registro['IdCargo']);
+            $inserta->bindParam(":NombreCargo", $registro['NombreCargo']);
+            $inserta->bindParam(":DescripcionCargo", $registro['DescripcionCargo']);
+            
             $insercion = $inserta->execute();
 
-            $clavePrimariaConQueInserto = $this->conexion->lastInsertId();
+            $clavePrimariaConQueInserto = $this->Conexion->lastInsertId();
+
+
 
             return ['inserto' => 1, 'resultado' => $clavePrimariaConQueInserto];
         } catch (PDOException $pdoExc) {
             return ['inserto' => 0, 'resultado' => $pdoExc->errorInfo[2]];
         }
     }
- 
+
+    public function actualizar($registro) {
+
+
+        try {
+            $NombreCargo = $registro[0]['NombreCargo'];
+            $DescripcionCargo = $registro[0]['DescripcionCargo'];
+            $IdCargo = $registro[0]['IdCargo'];
+
+            if (isset($IdCargo)) {
+                $actualizar = "UPDATE cargo SET NombreCargo= ? , DescripcionCargo = ?  WHERE IdCargo= ? ;";
+                $actualizacion = $this->Conexion->prepare($actualizar);
+                $actualizacion = $actualizacion->execute(array($NombreCargo, $DescripcionCargo, $IdCargo));
+                return ['actualizacion' => $actualizacion, 'mensaje' => "Actualización realizada."];
+            }
+        } catch (PDOException $pdoExc) {
+            return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+        }
+    }
+
+    public function eliminar($sId = array()) {//Recibe llave primaria a eliminar
+        
+        $planConsulta = "delete from cargo ";
+        $planConsulta .= " where IdCargo= :IdCargo ;";
+        $eliminar = $this->Conexion->prepare($planConsulta);
+        $eliminar->bindParam(':IdCargo', $sId[0], PDO::PARAM_INT);
+        $resultado = $eliminar->execute();
+
+        $this->cierreConexion();
+
+        if (!empty($resultado)) {
+            return ['eliminar' => TRUE, 'registroEliminado' => array($sId[0])];
+        } else {
+            return ['eliminar' => FALSE, 'registroEliminado' => array($sId[0])];
+        }
+    }
+//////
+    public function eliminarLogico($sId = array()) {// Se deshabilita un registro cambiando su estado a 0
+        try {
+
+            $cambiarEstado = 0;
+
+            if (isset($sId[0])) {
+                $actualizar = "UPDATE cargo SET estado = ? WHERE IdCargo= ? ;";
+                $actualizacion = $this->Conexion->prepare($actualizar);
+                $actualizacion = $actualizacion->execute(array($cambiarEstado, $sId[0]));
+                return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Inactivado."];
+            }
+        } catch (PDOException $pdoExc) {
+            return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+        }
+    }
+
+    public function habilitar($sId = array()) {// Se habilita un registro cambiando su estado a 1
+        try {
+
+            $cambiarEstado = 1;
+
+            if (isset($sId[0])) {
+                $actualizar = "UPDATE cargo SET estado = ? WHERE IdCargo= ? ;";
+                $actualizacion = $this->Conexion->prepare($actualizar);
+                $actualizacion = $actualizacion->execute(array($cambiarEstado, $sId[0]));
+                return ['actualizacion' => $actualizacion, 'mensaje' => "Registro Activado."];
+            }
+        } catch (PDOException $pdoExc) {
+            return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+        }
+    }    
     
 }

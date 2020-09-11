@@ -1,94 +1,93 @@
 <?php
-//Incluimos las clases pertinentes
 include_once PATH . 'Modelos/ModeloCargo/CargoDAO.php';
+
 class CargoControlador {
-    //Definimos lavariablesque se usaran 
+
     private $datos;
-//    Definimos el constructor de la clase
+
     public function __construct($datos) {
         $this->datos = $datos;
         $this->CargoControlador();
-        
     }
-    //Hacemos una funcion la cual nospermitira el paso asi la vista
-    public function CargoControlador() {
-        //Hacemos un switch case para definir el comportamiento
-        //y le damos el valor que viene por la peticion de la vista
-        switch ($this->datos['ruta']) {
-            case "MenuCargo":
-                header("Location: Principal.php?contenido=Vistas/VistasCargo/MenuCargo.php");
-                break;
-            case "FormInsertarCargo":
-                header("Location: Principal.php?contenido=Vistas/VistasCargo/FormInsertarCargo.php");
-                break;
-            case "FormConsultarCargo":
-                header("Location: Principal.php?contenido=Vistas/VistasCargo/FormConsultarCargo.php");
-                break;
-            case "FormActualizarCargo":
-                header("Location: Principal.php?contenido=Vistas/VistasCargo/FormActualizarCargo.php");
-                break;
-            case "MenuTipoCargo":
-                header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/MenuTipoCargo.php");
-                break;
-            case "FormInsertarTipoCargo":
-               
-                //Instanaciamos la clase que vamos a usar
-               
-                $LlenarCombo = new CargoDAO( SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-                //Llamamos la funcion 
-                $Resul = $LlenarCombo->SeleccionarTodos();
-                //Iniciamos sesiones
-                session_start();
-                $_SESSION['Resul'] = $Resul;
-                //Limpiamos
-                $Resul = null;
-/*
-                $LlenarTabla = new CargoDAO( SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
-                //Llamamos la funcion 
-                $Resul1 = $LlenarTabla->SeleccionarTodosTipoCargo();
-                //Iniciamos sesiones
-                session_start();
-                $_SESSION['Resul1'] = $Resul1;
-                //Limpiamos
-                $Resul1 = null;
-*/
-                header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/FormInsertarTipoCargo.php");
-                break;
-            case "FormActualizarTipoCargo":
-                header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/FormActualizarTipoCargo.php");
-                break;
-            case "InsertarTipoCargo":
-                
-                    //Instanciamos la clase 
-                    $BuscarTipo =new CargoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASENIA_BD);
-                    //Lammamos al metodo que vammos a usar
-                    $Existe = $BuscarTipo->seleccionarNombreCargo($this->datos['NombreTipoCargo']);
-                    //Hacemos una condicion para valodar
-                    if(!$Existe['exitoSeleccionId']){
-                    //Instanciamos la clase que vamosa usar
-                    $InsertarTipo = new CargoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASENIA_BD);
-                    //Llamamos al metod o de la clase instanciada y le damos los datos 
-                    $Result = $InsertarTipo->insertarTipoCargo($this->datos);
-                    //DEfinimos una variable la cual nos verificara si se hizo la insercion 
-                    $ExitosaInsercion = $InsertarTipo['Inserto'];
-                    $ResultadoInsertado = $InsertarTipo['resultado'];
-                    //abrimos sesion
-                    session_start();
-                    $_SESSION['Mensaje']="La insercion fue exitosa " .$this->datos['NombreTipoCargo'].$ResultadoInsertado;
-                    header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/FormInsertarTipoCargo.php");
-                    } 
-                    else {
-                        session_start();
-                    $_SESSION['IdTipoCargo'] = $this->datos['IdTipoCargo'];
-                    $_SESSION['NombreTipoCargo'] = $this->datos['NombreTipoCargo'];
-                    $_SESSION['Cargo_IdCargo'] = $this->datos['Cargo_IdCargo'];
-                    $_SESSION['mensaje'] = "   El código " . $this->datos['IdTipoCargo'] . " ya existe en el sistema.";
 
-                    header("location:Controlador.php?ruta=FormInsertarTipoCargo.php");
-                    }  
-            break;
+    public function CargoControlador() {
+
+        switch ($this->datos['ruta']) {
+            case 'mostrarInsertarCargo':
+               
+                header("Location: principal.php?contenido=Vistas/vistasCargo/vistaInsertarCargo.php");
+
+                break;
+            case 'insertarCargo':
+                //Se instancia LibroDAO para insertar
+                $buscarCargo = new CargoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+//                echo "<pre>";
+//                print_r($libroHallado);
+//                echo "</pre>";                
+                //Se consulta si existe ya el registro
+                $CargoHallado = $buscarCargo->seleccionarId(array($this->datos['IdCargo']));
+                //Si no existe el libro en la base se procede a insertar ****            
+                if (!$CargoHallado['exitoSeleccionId']) {
+                    $insertarCargo = new CargoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                    $insertoCargo = $insertarCargo->insertar($this->datos);  //inserción de los campos en la tabla libros 
+                    $exitoInsercionCargo = $insertoCargo['inserto']; //indica si se logró inserción de los campos en la tabla libros
+                    $resultadoInsercionCargo = $insertoCargo['resultado'];                //Traer el id con que quedó el libro de lo contrario la excepción o fallo  
+
+                    session_start();
+                    $_SESSION['mensaje'] = "Registrado " . $this->datos['IdCargo'] . " con éxito.  Agregado Nuevo Cargo con " . $resultadoInsercionCargo;
+
+                    header("location:Controlador.php?ruta=listarCargo");
+                } else {// Si existe se retornan los datos y se envía el mensaje correspondiente ****
+                    session_start();
+                    $_SESSION['IdCargo'] = $this->datos['IdCargo'];
+                    $_SESSION['NombreCargo'] = $this->datos['NombreCargo'];
+                    $_SESSION['DescripcionCargo'] = $this->datos['DescripcionCargo'];
+
+                    $_SESSION['mensaje'] = "   El código " . $this->datos['IdCargo'] . " ya existe en el sistema.";
+
+                    header("location:Controlador.php?ruta=mostrarInsertarCargo");
+                }
+                break;
+            case "listarCargo": //provisionalmente para trabajar con datatables
+
+                $gestarCargo = new CargoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                $registroCargo = $gestarCargo->seleccionarTodos();
+
+                session_start();
+                //SE SUBEN A SESION LOS DATOS NECESARIOS PARA QUE LA VISTA LOS IMPRIMA O UTILICE//
+                $_SESSION['listaDeCargo'] = $registroCargo;
+
+                header("location:principal.php?contenido=Vistas/VistasCargo/listaRegistrosCargo.php");
+                break;
+            case "actualizarCargo":
+                $gestarCargo = new CargoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                $consultaDeCargo = $gestarCargo->seleccionarId($this->datos['idAct']); //Se consulta el libro para traer los datos.
+
+                $actualizarDatosCargo = $consultaDeCargo['registroEncontrado'][0];
+
+                session_start();
+                $_SESSION['actualizarDatosCargo'] = $actualizarDatosCargo;
+
+                header("location:principal.php?contenido=Vistas/VistasCargo/VistaActualizarCargo.php");
+                break;
+            case "confirmaActualizarCargo":
+                $gestarCargo = new CargoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                $actualizarCargo = $gestarCargo->actualizar(array($this->datos)); //Se envía datos del libro para actualizar.                
+
+                session_start();
+                $_SESSION['mensaje'] = "Actualización realizada.";
+                header("location:Controlador.php?ruta=listarCargo");
+                break;
+            case "eliminarCargo":
+                $gestarCargo = new CargoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                $gestarCargo->eliminar(array($this->datos['idAct'])); // BORRADO FÍSICO
+//                $gestarLibros->eliminarLogico(array($this->datos['idAct']));// BORRADO LÓGICO
+
+                session_start();
+                $_SESSION['mensaje'] = "   Borrado exitoso!!! ";
+                header("location:Controlador.php?ruta=listarCargo");
+                break;
         }
     }
-
 
 }

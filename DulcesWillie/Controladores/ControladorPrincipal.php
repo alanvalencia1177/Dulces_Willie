@@ -5,6 +5,7 @@ include_once PATH . 'Controladores/ProveedorControlador.php';
 include_once PATH . 'Controladores/CargoControlador.php';
 include_once PATH . 'Modelos/Validaciones.php';
 include_once PATH . 'Modelos/ModeloProveedor/ValidadorProveedor.php';
+include_once PATH . 'Modelos/ModeloCargo/ValidadorCargo.php';
 
 class ControladorPrincipal {
      //Declaramos las variables que vamos a usar
@@ -40,7 +41,7 @@ class ControladorPrincipal {
         //Tendra el control dependiendo la peticion de la variable
         switch($this->datos['ruta'])
         {
-            case "MostrarDfc":
+           /*  case "MostrarDfc":
                  $Dfc = new DetFacturaCompraControlador ($this->datos);
             break;
             case "MenuCargo":
@@ -89,7 +90,7 @@ class ControladorPrincipal {
                 $Cargo = new CargoControlador($this->datos);    
                 break;
         
-
+ */
                 
             ///*****GESTIONANDO LA TABLA Proveedor********///            
          
@@ -131,6 +132,54 @@ class ControladorPrincipal {
                     break;
                 case "eliminarProveedor":
                     $ProveedorControlador = new ProveedorControlador($this->datos);
+                    break;
+
+
+
+                    ///*****GESTIONANDO LA TABLA Cargo********///     
+                    
+                    case "MenuCargo":
+                        header("location:principal.php?contenido=vistas/vistasCargo/MenuCargo.php");
+                        break;
+
+            case "mostrarInsertarCargo":
+                case "insertarCargo":
+                    if ($this->datos['ruta'] == "insertarCargo") {
+                        $validarRegistro = new ValidadorCargo();
+                        $erroresValidacion = $validarRegistro->validarFormularioCargo($this->datos);
+                    }
+                    if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                        session_start();
+                        $_SESSION['erroresValidacion'] = $erroresValidacion;
+                        header("location:principal.php?contenido=vistas/vistasCargo/vistaInsertarCargo.php");
+                    } else {
+                        $CargoControlador = new CargoControlador($this->datos);
+                    }
+                    break;
+                case "listarCargo":
+                    $CargoControlador = new CargoControlador($this->datos);
+    
+                    break;
+                case "actualizarCargo":
+                    
+                    $CargoControlador=new CargoControlador($this->datos);
+                    
+                    break;
+                case "confirmaActualizarCargo":               
+                    if ($this->datos['ruta'] == "confirmaActualizarCargo") {
+                        $validarRegistro = new ValidadorCargo();
+                        $erroresValidacion = $validarRegistro->validarFormularioCargo($this->datos);
+                    }
+                    if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                        session_start();
+                        $_SESSION['erroresValidacion'] = $erroresValidacion;
+                        header("location:principal.php?contenido=vistas/vistasCargo/vistaActualizarCargo.php");
+                    } else {
+                        $CargoControlador = new CargoControlador($this->datos);
+                    }              
+                    break;
+                case "eliminarCargo":
+                    $CargoControlador = new CargoControlador($this->datos);
                     break;
         }
         
