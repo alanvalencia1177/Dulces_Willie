@@ -43,12 +43,11 @@ class ControladorPrincipal {
         //Tendra el control dependiendo la peticion de la variable
         switch($this->datos['ruta'])
         {
-           /*  case "MostrarDfc":
-                 $Dfc = new DetFacturaCompraControlador ($this->datos);
-            break;
-            case "MenuCargo":
-                $Cargo = new CargoControlador($this->datos);    
+            
+            case "MenuTipoCargo":
+                $MenuTipoCargo = new TipoCargoControlador($this->datos);    
                 break;
+                /*
             case "FormInsertarCargo":
                 
                 $Cargo = new CargoControlador($this->datos);    
