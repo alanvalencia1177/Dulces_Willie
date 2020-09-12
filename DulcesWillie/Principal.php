@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'modelos/ConstantesMyCon.php';
+include_once 'Modelos/ConstantesMyCon.php';
 
 //
 //$seguridad = new BloqueDeSeguridad();
@@ -84,6 +84,7 @@ if (isset($_SESSION['mensaje'])) {
             <a class="collapse-item" href="Controlador.php?ruta=MenuCargo">Cargo</a>
             <a class="collapse-item" href="Controlador.php?ruta=MenuTipoCargo">Tipos de cargo</a>
             <a class="collapse-item" href="Controlador.php?ruta=MenuEmpleado">Empleado</a>
+            <a class="collapse-item" href="Controlador.php?ruta=MenuPersona">Persona</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Reportes Especiales Libros</h6>
             <a class="collapse-item" href="">R1 - T1</a>
