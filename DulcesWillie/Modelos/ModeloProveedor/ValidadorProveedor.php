@@ -23,7 +23,7 @@ class ValidadorProveedor {
 //                    $patronDocumento = "/^[^ ][0-9a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ- ]*$/";
                     $patronNombreProveedor = "//";
                     if (!preg_match($patronNombreProveedor, $value)) {
-                        $mensajesError['NombreNombreProveedor']="*2-Formato/Dato incorrecto";
+                        $mensajesError['NombreProveedor']="*2-Formato/Dato incorrecto";
                     }
                     break;
                     case 'NitProveedor':

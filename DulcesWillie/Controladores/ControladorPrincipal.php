@@ -8,6 +8,9 @@ include_once PATH . 'Modelos/Validaciones.php';
 include_once PATH . 'Modelos/ModeloProveedor/ValidadorProveedor.php';
 include_once PATH . 'Modelos/ModeloCargo/ValidadorCargo.php';
 include_once PATH . 'Modelos/ModeloTipoCargo/ValidadorTipoCargo.php';
+include_once PATH . 'Controladores/PersonaControlador.php';
+include_once PATH . 'Modelos/ModeloPersona/ValidadorPersona.php';
+
 class ControladorPrincipal {
      //Declaramos las variables que vamos a usar
     private $datos = array();
@@ -64,7 +67,7 @@ class ControladorPrincipal {
             break;
             case "insertarTipoCargo":
                 if ($this->datos['ruta'] == "insertarTipoCargo") 
-                    
+            break;      
             case "FormActualizarTipoCargo":
                 $TipoCargo = new TipoCargoControlador($this->datos);    
                 break;
@@ -150,7 +153,7 @@ class ControladorPrincipal {
                     if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
                         session_start();
                         $_SESSION['erroresValidacion'] = $erroresValidacion;
-                        header("location:principal.php?contenido=vistas/vistasCargo/vistaActualizarCargo.php");
+                        header("location:principal.php?contenido=Vistas/vistasCargo/vistaActualizarCargo.php");
                     } else {
                         $CargoControlador = new CargoControlador($this->datos);
                     }              
@@ -158,6 +161,52 @@ class ControladorPrincipal {
                 case "eliminarCargo":
                     $CargoControlador = new CargoControlador($this->datos);
                     break;
+
+                   ///*****GESTIONANDO LA TABLA Persona********///     
+                    
+                   case "MenuPersona":
+                    header("location:principal.php?contenido=Vistas/VistasPersona/MenuPersona.php");
+                    break;
+
+        case "mostrarInsertarPersona":
+            case "insertarPersona":
+                if ($this->datos['ruta'] == "insertarPersona") {
+                    $validarRegistro = new ValidadorPersona();
+                    $erroresValidacion = $validarRegistro->validarFormularioPersona($this->datos);
+                }
+                if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                    session_start();
+                    $_SESSION['erroresValidacion'] = $erroresValidacion;
+                    header("location:principal.php?contenido=vistas/vistasPersona/vistaInsertarPersona.php");
+                } else {
+                    $PersonaControlador = new PersonaControlador($this->datos);
+                }
+                break;
+            case "listarPersona":
+                $PersonaControlador = new PersonaControlador($this->datos);
+
+                break;
+            case "actualizarPersona":
+                
+                $PersonaControlador=new PersonaControlador($this->datos);
+                
+                break;
+            case "confirmaActualizarPersona":               
+                if ($this->datos['ruta'] == "confirmaActualizarPersona") {
+                    $validarRegistro = new ValidadorPersona();
+                    $erroresValidacion = $validarRegistro->validarFormularioPersona($this->datos);
+                }
+                if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                    session_start();
+                    $_SESSION['erroresValidacion'] = $erroresValidacion;
+                    header("location:principal.php?contenido=Vistas/VistasPersona/VistaActualizarPersona.php");
+                } else {
+                    $PersonaControlador = new PersonaControlador($this->datos);
+                }              
+                break;
+            case "eliminarPersona":
+                $PersonaControlador = new PersonaControlador($this->datos);
+                break;   
         }
         
     }
