@@ -3,10 +3,11 @@
 
 include_once PATH . 'Controladores/ProveedorControlador.php';
 include_once PATH . 'Controladores/CargoControlador.php';
+include_once PATH . 'Controladores/TipoCargoControlador.php';
 include_once PATH . 'Modelos/Validaciones.php';
 include_once PATH . 'Modelos/ModeloProveedor/ValidadorProveedor.php';
 include_once PATH . 'Modelos/ModeloCargo/ValidadorCargo.php';
-
+include_once PATH . 'Modelos/ModeloTipoCargo/ValidadorTipoCargo.php';
 class ControladorPrincipal {
      //Declaramos las variables que vamos a usar
     private $datos = array();
@@ -37,59 +38,36 @@ class ControladorPrincipal {
     {
        
         
-                //Hacemos un switch case el cual 
+        //Hacemos un switch case el cual 
         //Tendra el control dependiendo la peticion de la variable
         switch($this->datos['ruta'])
         {
-            
+            //-----------------------------------------------
+            //--------------Tabla TipoCago------------------
+            //-----------------------------------------------
             case "MenuTipoCargo":
                 $MenuTipoCargo = new TipoCargoControlador($this->datos);    
                 break;
-                /*
-            case "FormInsertarCargo":
                 
-                $Cargo = new CargoControlador($this->datos);    
+            case "FormInsertarTipoCargo":
+                
+                $TipoCargo = new TipoCargoControlador($this->datos);    
                 break;
-            case "FormConsultarCargo":
-                $Cargo = new CargoControlador($this->datos);    
+            case "FormConsultarTipoCargo":
+                $TipoCargo = new TipoCargoControlador($this->datos);    
                 break;
             case "FormActualizarCargo":
-                $Cargo = new CargoControlador($this->datos);    
+                $TipoCargo = new TipoCargoControlador($this->datos);    
                 break;
-            case "MenuTipoCargo":
-                $Cargo = new CargoControlador($this->datos);    
-                break;
-            
-            case "FormInsertarTipoCargo":
-            case "InsertarTipoCargo":  
-                //Hacemos una condicion praverificar que es loque me traerlavaribale
-                //del comportamiento
-                if($this->datos['ruta'] == "InsertarTipoCargo")
-                {
-                    //Insrancioms la clase de validaciones
-                    $Validar = new Validaciones();
-                    $ErrorValidar = $Validar->ValidarTipoCargo($this->datos);
-                }
-                //Hacemos una condicion pra saber si el validarnos arroja algun 
-                //Dato
-                if(isset($ErrorValidar) && $ErrorValidar != FALSE)
-                {
-                    //Abrumos sesion 
-                    session_start();
-                    $_SESSION['ErrorValidar'] = $ErrorValidar;
-                    //Lo enviamos a la vista se sale error
-                    header("Location: Principal.php?Contenido=Vistas/VistasTipoCargo/FormInsertarTipoCargo.php"); 
-                }
-                else
-                {
-                   $Cargo = new CargoControlador($this->datos);  
-                }
-                break;
+            case "mostrarInsertarTipoCargo ":
+                header("location:principal.php?contenido=Vistas/VistasTipoCargo/VistaInsertarTipoCargo.php");
+            break;
+            case "insertarTipoCargo":
+                if ($this->datos['ruta'] == "insertarTipoCargo") 
+                    
             case "FormActualizarTipoCargo":
-                $Cargo = new CargoControlador($this->datos);    
+                $TipoCargo = new TipoCargoControlador($this->datos);    
                 break;
-        
- */
                 
             ///*****GESTIONANDO LA TABLA Proveedor********///            
          

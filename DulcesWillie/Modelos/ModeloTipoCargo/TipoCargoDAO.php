@@ -3,23 +3,23 @@
 include_once PATH . 'Modelos/MyCon.php';
 //Definimosla clase 
 //Esta clase heredara los datos de l clase padre
-class CargoDAO extends MyCon
+class TipoCargoDAO extends MyCon
 {
-   //Declaramos el constructor como metodo el cual recibira los parametros 
+    //Declaramos el constructor como metodo el cual recibira los parametros 
     //de la conexion
-    function __construct($Servidor,$Base,$Login,$PasswordBD)
+    function __construct($Servidor, $Base, $Login, $PasswordBD)
     {
         //Atraves de Parent::__construct se le pasa alconstructor
         //dela 'Clase padres' (MyCon) los parametros de la conexion
         //que ha recibido la calse DAO
-        parent::__construct($Servidor,$Base,$Login,$PasswordBD);
+        parent::__construct($Servidor, $Base, $Login, $PasswordBD);
     }
 
     //Hacemos una funcion la cual seleccionara todos los registros
     public function SeleccionarTodos()
-    { 
+    {
         //Definimos una variable la cual tendra la sentencia MySQL
-        $Cargo ="Select * From Cargo";
+        $Cargo = "Select * From Cargo";
         //Declaramos una variable la cual Contendra la 
         //la informacion que que tiene la variable "$DetFacturaCompra"
         //Funcion prepare nos dara integridad segura de los datos que se estan enviando 
@@ -29,23 +29,21 @@ class CargoDAO extends MyCon
         //Definimos un array vacio el cual nos guadara los datos que se le envien
         $ListarCargo = array();
         //Hacemos un ciclo para que nos cargue el array
-        while ($Registro = $RegCargo->fetch(PDO::FETCH_OBJ))
-        {
+        while ($Registro = $RegCargo->fetch(PDO::FETCH_OBJ)) {
             //Le damos los datos al array que creamos anteriormente
-            $ListarCargo[]=$Registro;
+            $ListarCargo[] = $Registro;
         }
         //Cerramos la conexion 
         $this->CierreConexion();
         //Retornamos el array
         return $ListarCargo;
-
     }
     //Seleccionar todos Tabla
     //Hacemos una funcion la cual seleccionara todos los registros
     public function SeleccionarTodosTipoCargo()
-    { 
+    {
         //Definimos una variable la cual tendra la sentencia MySQL
-        $TipoCargo ="Select * From TipoCargo";
+        $TipoCargo = "Select * From TipoCargo";
         //Declaramos una variable la cual Contendra la 
         //la informacion que que tiene la variable "$DetFacturaCompra"
         //Funcion prepare nos dara integridad segura de los datos que se estan enviando 
@@ -55,38 +53,30 @@ class CargoDAO extends MyCon
         //Definimos un array vacio el cual nos guadara los datos que se le envien
         $ListarTipoCargo = array();
         //Hacemos un ciclo para que nos cargue el array
-        while ($Registro = $RegTipoCargo->fetch(PDO::FETCH_OBJ))
-        {
+        while ($Registro = $RegTipoCargo->fetch(PDO::FETCH_OBJ)) {
             //Le damos los datos al array que creamos anteriormente
-            $ListarTipoCargo[]=$Registro;
+            $ListarTipoCargo[] = $Registro;
         }
         //Cerramos la conexion 
         $this->CierreConexion();
         //Retornamos el array
         return $ListarTipoCargo;
-
     }
+    public function seleccionarNombreTipoCargo($NombreTipoCargo)
+    {
 
-
-
-
-
-
-
-    public function seleccionarNombreCargo($NombreCargo = array()) {
-
-        $planConsulta = "select * from Cargo c ";
-        $planConsulta .= " where c.NombreCargo = ? ;";
+        $planConsulta = "select * from tipocargo ";
+        $planConsulta .= " where NombreTipoCargo = ? ;";
 
         $listar = $this->Conexion->prepare($planConsulta);
-        $listar->execute(array($NombreCargo[0]));
-
+        $listar->execute(array($NombreTipoCargo));
+        
         $registroEncontrado = array();
 
         while ($registro = $listar->fetch(PDO::FETCH_OBJ)) {
             $registroEncontrado[] = $registro;
         }
-        $this->CierreConexion();
+        $this->cierreConexion();
         if (!empty($registroEncontrado)) {
             return ['exitoSeleccionId' => TRUE, 'registroEncontrado' => $registroEncontrado];
         } else {
@@ -94,19 +84,20 @@ class CargoDAO extends MyCon
         }
     }
 
-    public function insertarTipoCargo($registro) {
+    public function insertarTipoCargo($registro)
+    {
         try {
+            
             $query = "INSERT INTO tipocargo ";
-            $query .= " (IdTipoCargo, NombreTipoCargo, Cargo_IdCargo) ";
+            $query .= " (NombreTipoCargo, Cargo_IdCargo) ";
             $query .= " VALUES";
-            $query .= "(:IdTipoCargo , :NombreTipoCargo , :Cargo_IdCargo); ";
+            $query .= "(:NombreTipoCargo , :Cargo_IdCargo); ";
 
             $inserta = $this->conexion->prepare($query);
 
-            $inserta->bindParam(":IdTipoCargo", $registro['IdTipoCargo']);
             $inserta->bindParam(":NombreTipoCargo", $registro['NombreTipoCargo']);
             $inserta->bindParam(":Cargo_IdCargo", $registro['Cargo_IdCargo']);
-           
+
             $insercion = $inserta->execute();
 
             $clavePrimariaConQueInserto = $this->conexion->lastInsertId();
@@ -116,6 +107,4 @@ class CargoDAO extends MyCon
             return ['inserto' => 0, 'resultado' => $pdoExc->errorInfo[2]];
         }
     }
- 
-    
 }

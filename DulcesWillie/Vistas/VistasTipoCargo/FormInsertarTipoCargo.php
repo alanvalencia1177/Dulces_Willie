@@ -1,29 +1,19 @@
 <?php
-/*
- echo "<pre>";
-    print_r($_SESSION);
- echo "</pre>";
- */
- //Limpiamos la sesion 
+
+//verificamos si la sesion contiene algun dato
  if( isset($_SESSION['Resul']))
  {
+     //asignando el valor a ina variable 
      $Resul = $_SESSION['Resul'];
-     //Definimos una varuable que me va a contar o servir de contador
+    //Hacemos un conteo de la variable 
      $Conteo = count($Resul);
  }
-
- /*if( isset($_SESSION['Resul1']))
- {
-     $Resul1 = $_SESSION['Resul1'];
-     //Definimos una varuable que me va a contar o servir de contador
-     $Conteo1 = count($Resul1);
- }*/
 ?>
         <center>
             <div>
                 <fieldset>
                     <legend>Formulario tipo de cargo</legend>
-                    <form action="Controlador.php?ruta=InsertarTipoCargo" method="POST">
+                    <form action="Controlador.php?ruta=FormInsertarTipoCargo" method="POST" name="FormInsertarTipoCargo">
                         <table class="table table-responsive" id="tabla" border="1" >
                             <tr>
                            
@@ -37,7 +27,7 @@
                                 <tr>
                                     <td>
                                     
-                                        <select id='Cargo' name='Cargo'>
+                                        <select id='Cargo' name='Cargo_IdCargo'>
                                             <?php
                                                 //Hacemos un ciclo for para llenar el combo
                                                 for($j=0; $j<$Conteo; $j++)
@@ -54,6 +44,10 @@
                                 <tr>
                                     <td>
                                         <input type="text" name="NombreTipoCargotxt" id="txt" class="form-control" placeholder="Nombre tipo cargo" title="Nombre tipo cargo">
+                                       <!-- <input class="form-control" placeholder="Nombre Tipo Cargo" name="NombreTipoCargo" 
+                                        value=</*?php if (isset($erroresValidacion['datosViejos']['NombreTipoCargo'])) echo "\"" . $erroresValidacion['datosViejos']['NombreTipoCargo'] . "\""; 
+                                        if(isset($_SESSION['NombreTipoCargo'])) echo $_SESSION['NombreTipoCargo']; unset($_SESSION['NombreTipoCargo']);?>*/ >           
+                                   !-->
                                     </td>
                                 </tr>
                                 <tr>
@@ -68,7 +62,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                <center><button input type="submit" name="InsertarTipoCargo" value="InsertarTipoCargo" class="form-control" placeholder="Guardar Tipo Cargo" title="Guardar Tipo Cargo">Guardar Tipo Cargo</button></center>
+                                <center><button input type="submit" name="ruta" value="InsertarTipoCargo" class="form-control" placeholder="Guardar Tipo Cargo" title="Guardar Tipo Cargo">Guardar Tipo Cargo</button></center>
                                     </td> 
                                 </tr>
                         </table>
