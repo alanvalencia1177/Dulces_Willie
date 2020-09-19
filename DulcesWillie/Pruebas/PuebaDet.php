@@ -13,7 +13,7 @@ print_r($Cliente1);
 echo "</pre>";
 
 $cargo = new TipoCargoDAO(SERVIDOR,BASE,USUARIO_BD,CONTRASENIA_BD);
-$carg = $cargo->SeleccionarTodos();
+$carg = $cargo->SeleccionarTodosTipoCargo();
 echo "<pre>";
 print_r($carg);
 echo "</pre>";

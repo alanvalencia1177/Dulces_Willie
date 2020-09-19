@@ -51,26 +51,43 @@ class ControladorPrincipal {
             case "MenuTipoCargo":
                 $MenuTipoCargo = new TipoCargoControlador($this->datos);    
                 break;
-                
-            case "FormInsertarTipoCargo":
-                
-                $TipoCargo = new TipoCargoControlador($this->datos);    
-                break;
-            case "FormConsultarTipoCargo":
-                $TipoCargo = new TipoCargoControlador($this->datos);    
-                break;
-            case "FormActualizarCargo":
-                $TipoCargo = new TipoCargoControlador($this->datos);    
-                break;
-            case "mostrarInsertarTipoCargo ":
-                header("location:principal.php?contenido=Vistas/VistasTipoCargo/VistaInsertarTipoCargo.php");
+            case "listarTipoCargo":
+                $TipoCargo = new TipoCargoControlador($this->datos);
             break;
-            case "insertarTipoCargo":
-                if ($this->datos['ruta'] == "insertarTipoCargo") 
-            break;      
-            case "FormActualizarTipoCargo":
+            case "actualizarTipoCargo":  
                 $TipoCargo = new TipoCargoControlador($this->datos);    
                 break;
+            case "confirmaActualizarTipoCargo":
+                if ($this->datos['ruta'] == "confirmaActualizarTipoCargo") {
+                    $validarRegistro = new ValidadorTipoCargo();
+                    $erroresValidacion = $validarRegistro->validarFormularioTipoCargo($this->datos);
+                }
+                if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                    session_start();
+                    $_SESSION['erroresValidacion'] = $erroresValidacion;
+                    header("location:principal.php?contenido=Vistas/VistasTipoCargo/VistaActualizarTipoCargo.php");
+                } else {
+                    $TipoCargo = new TipoCargoControlador($this->datos);  
+                }   
+                    break;
+            case "mostrarInsertarTipoCargo":
+            case "insertarTipoCargo":
+                
+                if ($this->datos['ruta'] == "insertarTipoCargo") {
+                    $validarRegistro = new ValidadorTipoCargo();
+                    $erroresValidacion = $validarRegistro->validarFormularioTipoCargo($this->datos);
+                }
+                if (isset($erroresValidacion) && $erroresValidacion != FALSE) {
+                    session_start();
+                    $_SESSION['erroresValidacion'] = $erroresValidacion;
+                    header("location:principal.php?contenido=Vistas/VistasTipoCargo/VistaInsertarTipoCargo.php");
+                } else {
+                    $TipoCargo = new TipoCargoControlador($this->datos);  
+                }
+
+                
+            break;    
+            
                 
             ///*****GESTIONANDO LA TABLA Proveedor********///            
          
@@ -212,4 +229,3 @@ class ControladorPrincipal {
     }
     
 }
-?>

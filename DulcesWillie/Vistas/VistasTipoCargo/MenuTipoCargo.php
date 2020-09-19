@@ -14,11 +14,11 @@
 
                 </td>
                 <td>
-                   <a href="Controlador.php?ruta=FormActualizarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?ruta=listarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
 
                 </td>
                 <td>
-                   <!--<a href="Controlador.php?Ruta=FormActualizarCargo"> <img src="Cargo.png" width="256" height="256" /></a>-->
+                   <a href="Controlador.php?Ruta=VistaActualizarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
 
                 </td>
                 

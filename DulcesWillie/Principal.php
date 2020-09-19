@@ -104,6 +104,8 @@ if (isset($_SESSION['mensaje'])) {
             <h6 class="collapse-header">Operaciones Proveedor</h6>
             <a class="collapse-item" href="Controlador.php?ruta=listarProveedor">Listar registros Proveedor</a>
             <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarProveedor">Agregar Registro proveedor</a>
+            <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarTipoCargo">mostrarInsertarTipoCargo</a>
+            
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Reportes Especiales Tabla 2</h6>
             <a class="collapse-item" href="">R1 - T2</a>

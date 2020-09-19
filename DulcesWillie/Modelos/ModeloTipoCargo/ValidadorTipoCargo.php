@@ -1,7 +1,7 @@
 <?php
 class ValidadorTipoCargo {
 
-public function validarFormularioProveedor($datos) {
+public function validarFormularioTipoCargo($datos) {
     $mensajesError = NULL;
     $datosViejos = NULL;
     $marcaCampo = NULL;
@@ -22,11 +22,11 @@ public function validarFormularioProveedor($datos) {
                 break;
     
 
-            case 'DescripcionProveedor':
+            case 'DescripcionTipoCargo':
 //                    $patronDocumento = "/^[^ ][0-9a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ- ]*$/";
                 $patronDescripcionProveedor = "//";
                 if (!preg_match($patronDescripcionProveedor, $value)) {
-                    $mensajesError['DescripcionProveedor']="*4-Formato/Dato incorrecto";
+                    $mensajesError['DescripcionTipoCargo']="*4-Formato/Dato incorrecto";
                 }
                 break;
           

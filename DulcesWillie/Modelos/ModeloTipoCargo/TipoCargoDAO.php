@@ -16,7 +16,7 @@ class TipoCargoDAO extends MyCon
     }
 
     //Hacemos una funcion la cual seleccionara todos los registros
-    public function SeleccionarTodos()
+    public function CargarComboCargo()
     {
         //Definimos una variable la cual tendra la sentencia MySQL
         $Cargo = "Select * From Cargo";
@@ -93,18 +93,65 @@ class TipoCargoDAO extends MyCon
             $query .= " VALUES";
             $query .= "(:NombreTipoCargo , :Cargo_IdCargo); ";
 
-            $inserta = $this->conexion->prepare($query);
+            $inserta = $this->Conexion->prepare($query);
 
             $inserta->bindParam(":NombreTipoCargo", $registro['NombreTipoCargo']);
             $inserta->bindParam(":Cargo_IdCargo", $registro['Cargo_IdCargo']);
 
             $insercion = $inserta->execute();
 
-            $clavePrimariaConQueInserto = $this->conexion->lastInsertId();
+            $clavePrimariaConQueInserto = $this->Conexion->lastInsertId();
 
             return ['inserto' => 1, 'resultado' => $clavePrimariaConQueInserto];
         } catch (PDOException $pdoExc) {
             return ['inserto' => 0, 'resultado' => $pdoExc->errorInfo[2]];
         }
     }
+    public function seleccionarId($sId) {
+
+        $planConsulta = "select TC.IdTipoCargo,TC.NombreTipoCargo,C.IdCargo,C.NombreCargo from ";
+        $planConsulta .= " TipoCargo as TC ";
+        $planConsulta .= " INNER JOIN Cargo as C ";
+        $planConsulta .= " ON TC.Cargo_IdCargo = C.IdCargo ";
+        $planConsulta .= " WHERE TC.IdTipoCargo= ? ;";
+        
+        
+        
+
+        $listar = $this->Conexion->prepare($planConsulta);
+        $listar->execute(array($sId));
+
+        $registroEncontrado = array();
+
+        while ($registro = $listar->fetch(PDO::FETCH_OBJ)) {
+            $registroEncontrado[] = $registro;
+        }
+
+        $this->CierreConexion();
+        if (!empty($registroEncontrado)) {
+            return ['exitoSeleccionId' => TRUE, 'registroEncontrado' => $registroEncontrado];
+        } else {
+            return ['exitoSeleccionId' => FALSE, 'registroEncontrado' => $registroEncontrado];
+        }
+    }
+
+    public function actualizar($registro) {
+
+
+        try {
+            $NombreTipoCargo = $registro[0]['NombreTipoCargo'];
+            //$DescripcionCargo = $registro[0]['DescripcionCargo'];
+            $IdTipoCargo = $registro[0]['IdTipoCargo'];
+
+            if (isset($IdTipoCargo)) {
+                $actualizar = "UPDATE TipoCargo SET NombreTipoCargo= ?  WHERE IdTipoCargo= ? ;";
+                $actualizacion = $this->Conexion->prepare($actualizar);
+                $actualizacion = $actualizacion->execute(array($NombreTipoCargo,$IdTipoCargo));
+                return ['actualizacion' => $actualizacion, 'mensaje' => "Actualización realizada."];
+            }
+        } catch (PDOException $pdoExc) {
+            return ['actualizacion' => $actualizacion, 'mensaje' => $pdoExc];
+        }
+    }
+
 }
