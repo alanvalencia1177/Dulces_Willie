@@ -1,8 +1,33 @@
- <?php
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+            <title>Dulces Willi'e</title>
+        </head>
+        <body>
+        <center>
+            <table class="table table-responsive" id="tabla" border="1" >
+            <tr>
+            
+                <td >
+                   <a href="Controlador.php?ruta=mostrarInsertarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+                </td>
+                <td>
+                   <a href="Controlador.php?ruta=listarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+
+                </td>
+             
+            </tr>
+          
+            </table>
+            
+
+</center>
+
+
+
+
+    </body>
+</html>
 
