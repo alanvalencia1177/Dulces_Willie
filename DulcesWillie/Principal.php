@@ -9,237 +9,295 @@ include_once 'Modelos/ConstantesMyCon.php';
 
 
 if (isset($_SESSION['mensaje'])) {
-    $mensaje = $_SESSION['mensaje'];
-    echo "<script languaje='javascript'>alert('$mensaje')</script>";
-    unset($_SESSION['mensaje']);
+	$mensaje = $_SESSION['mensaje'];
+	echo "<script languaje='javascript'>alert('$mensaje')</script>";
+	unset($_SESSION['mensaje']);
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+	<title>Dulces Willie</title>
 
-  <title>EL PROYECTO</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="startbootstrap-sb-admin-2-gh-pages/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"> <!-- Google web font "Open Sans" -->
+	<link rel="stylesheet" href="css/fontawesome-all.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css" />
+	<link rel="stylesheet" type="text/css" href="slick/slick.css" />
+	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+	<link rel="stylesheet" href="css/tooplate-style.css">
 
-  <!-- Custom styles for this template-->
-  <link href="startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css" rel="stylesheet">
+	<script>
+		var renderPage = true;
 
+		if (navigator.userAgent.indexOf('MSIE') !== -1 ||
+			navigator.appVersion.indexOf('Trident/') > 0) {
+			/* Microsoft Internet Explorer detected in. */
+			alert("Please view this in a modern browser such as Chrome or Microsoft Edge.");
+			renderPage = false;
+		}
+	</script>
 </head>
 
-<body id="page-top">
+<body>
+	<!-- Loader -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+	</div>
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
+	<!-- Page Content -->
+	<div class="container-fluid tm-main">
+		<div class="row tm-main-row">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+			<!-- Sidebar -->
+			<div id="tmSideBar" class="col-xl-3 col-lg-4 col-md-12 col-sm-12 sidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">EL PROYE <sup>OK</sup></div>
-      </a>
+				<button id="tmMainNavToggle" class="menu-icon">&#9776;</button>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+				<div class="inner">
+					<nav id="tmMainNav" class="tm-main-nav">
+						<ul>
+							<li>
+								<a href="Controlador.php?ruta=MenuCargo" id="tmNavLink1" class="scrolly active" data-bg-img="constructive_bg_01.jpg">
+									<i class="fas fa-home tm-nav-fa-icon"></i>
+									Cargo
+								</a>
+							</li>
+							<li>
+								<a href="Controlador.php?ruta=MenuTipoCargo" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_02.jpg" data-page="#tm-section-2" data-page-type="carousel">
+									<i class="fas fa-map tm-nav-fa-icon"></i>
+									<span>Tipo Cargo</span>
+								</a>
+							</li>
+							<li>
+								<a href="Controlador.php?ruta=MenuEmpleado" class="scrolly" data-bg-img="constructive_bg_03.jpg" data-page="#tm-section-3">
+									<i class="fas fa-users tm-nav-fa-icon"></i>
+									<span>Empleado</span>
+								</a>
+							</li>
+							<li>
+								<a href="Controlador.php?ruta=MenuPersona" class="scrolly" data-bg-img="constructive_bg_04.jpg" data-page="#tm-section-4">
+									<i class="fas fa-comments tm-nav-fa-icon"></i>
+									<span>Persona</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
+			<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 ">
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+				<!------------DIV DE LA FUNCIONALIDAD----------------------------------------------------------->
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+				
+						
+				<h1 class="h3 mb-4 text-gray-800">Aquí la funcionalidad!!!!</h1>
+				<?php
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Gestión de datos
-      </div>
+				//Hacemosunacondicion que nos permitira si tiene algo seteado 
+				//usando la funcion isset
+				if (isset($_GET['contenido'])) {
+					include($_GET['contenido']);
+				}
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Modulos</span>
-        </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="Controlador.php?ruta=MenuCargo">Cargo</a>
-            <a class="collapse-item" href="Controlador.php?ruta=MenuTipoCargo">Tipos de cargo</a>
-            <a class="collapse-item" href="Controlador.php?ruta=MenuEmpleado">Empleado</a>
-            <a class="collapse-item" href="Controlador.php?ruta=MenuPersona">Persona</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Reportes Especiales Libros</h6>
-            <a class="collapse-item" href="">R1 - T1</a>
-            <a class="collapse-item" href="">R12 - T1</a>
-          </div>
-        </div>
-      </li>
-      <hr class="sidebar-divider">      
-      <!-- Nav Item - Pages Collapse Menu -->
-     <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Gestión Tabla 2</span>
-        </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Operaciones Proveedor</h6>
-            <a class="collapse-item" href="Controlador.php?ruta=listarProveedor">Listar registros Proveedor</a>
-            <a class="collapse-item" href="Controlador.php?ruta=mostrarInsertarProveedor">Agregar Registro proveedor</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Reportes Especiales Tabla 2</h6>
-            <a class="collapse-item" href="">R1 - T2</a>
-            <a class="collapse-item" href="">R12 - T2</a>
-          </div>
-        </div>
-      </li>
+				?>
+				
+				
+
+			</div>
+
+			<footer class="footer-link">
+				<p class="tm-copyright-text">Copyright &copy; 2018 Constructive Co. Ltd.
+
+					- Design: Tooplate</p>
+			</footer>
+			</div>
+	</div>
 
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+		<script type="text/javascript" src="slick/slick.min.js"></script> <!-- Slick Carousel -->
 
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+		<script>
 
-    </ul>
-    <!-- End of Sidebar -->
+		var sidebarVisible = false;
+		var currentPageID = "#tm-section-1";
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+		// Setup Carousel
+		function setupCarousel() {
 
-      <!-- Main Content -->
-      <div id="content">
+			// If current page isn't Carousel page, don't do anything.
+			if($('#tm-section-2').css('display') == "none") {
+			}
+			else {	// If current page is Carousel page, set up the Carousel.
 
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+				var slider = $('.tm-img-slider');
+				var windowWidth = $(window).width();
 
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
+				if (slider.hasClass('slick-initialized')) {
+					slider.slick('destroy');
+				}
 
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
+				if(windowWidth < 640) {
+					slider.slick({
+	              		dots: true,
+	              		infinite: false,
+	              		slidesToShow: 1,
+	              		slidesToScroll: 1
+	              	});
+				}
+				else if(windowWidth < 992) {
+					slider.slick({
+	              		dots: true,
+	              		infinite: false,
+	              		slidesToShow: 2,
+	              		slidesToScroll: 1
+	              	});
+				}
+				else {
+					// Slick carousel
+	              	slider.slick({
+	              		dots: true,
+	              		infinite: false,
+	              		slidesToShow: 3,
+	              		slidesToScroll: 2
+	              	});
+				}
 
-              <!-- Dropdown - Messages -->
+				// Init Magnific Popup
+				$('.tm-img-slider').magnificPopup({
+				  delegate: 'a', // child items selector, by clicking on it popup will open
+				  type: 'image',
+				  gallery: {enabled:true}
+				  // other options
+				});
+      		}
+  		}
 
-            <!-- Nav Item - Messages -->
-             <div class="topbar-divider d-none d-sm-block"></div>
+  		// Setup Nav
+  		function setupNav() {
+  			// Add Event Listener to each Nav item
+	     	$(".tm-main-nav a").click(function(e){
+	     		e.preventDefault();
+		    	
+		    	var currentNavItem = $(this);
+		    	changePage(currentNavItem);
+		    	
+		    	setupCarousel();
+		    	setupFooter();
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
+		    	// Hide the nav on mobile
+		    	$("#tmSideBar").removeClass("show");
+		    });	    
+  		}
 
-          </ul>
+  		function changePage(currentNavItem) {
+  			// Update Nav items
+  			$(".tm-main-nav a").removeClass("active");
+     		currentNavItem.addClass("active");
 
-        </nav>
-        <!-- End of Topbar -->
+	    	$(currentPageID).hide();
 
-        <!-- Begin Page Content -->
-        
-        <!------------DIV DE LA FUNCIONALIDAD----------------------------------------------------------->
-        <div class="container-fluid">
+	    	// Show current page
+	    	currentPageID = currentNavItem.data("page");
+	    	$(currentPageID).fadeIn(1000);
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Aquí la funcionalidad!!!!</h1>
-                            <?php
-               
-                            //Hacemosunacondicion que nos permitira si tiene algo seteado 
-                            //usando la funcion isset
-                            if (isset($_GET['contenido'])) {
-                                include($_GET['contenido']);
-                            }
+	    	// Change background image
+	    	var bgImg = currentNavItem.data("bgImg");
+	    	$.backstretch("img/" + bgImg);		    	
+  		}
 
-                            ?>           
+  		// Setup Nav Toggle Button
+  		function setupNavToggle() {
 
-        </div>
-        <!-- /.container-fluid -->
+			$("#tmMainNavToggle").on("click", function(){
+				$(".sidebar").toggleClass("show");
+			});
+  		}
 
-      </div>
-      <!-- End of Main Content -->
+  		// If there is enough room, stick the footer at the bottom of page content.
+  		// If not, place it after the page content
+  		function setupFooter() {
+  			
+  			var padding = 100;
+  			var footerPadding = 40;
+  			var mainContent = $("section"+currentPageID);
+  			var mainContentHeight = mainContent.outerHeight(true);
+  			var footer = $(".footer-link");
+  			var footerHeight = footer.outerHeight(true);
+  			var totalPageHeight = mainContentHeight + footerHeight + footerPadding + padding;
+  			var windowHeight = $(window).height();		
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+  			if(totalPageHeight > windowHeight){
+  				$(".tm-content").css("margin-bottom", footerHeight + footerPadding + "px");
+  				footer.css("bottom", footerHeight + "px");  			
+  			}
+  			else {
+  				$(".tm-content").css("margin-bottom", "0");
+  				footer.css("bottom", "20px");  				
+  			}  			
+  		}
 
-    </div>
-    <!-- End of Content Wrapper -->
+  		// Everything is loaded including images.
+      	$(window).on("load", function(){
 
-  </div>
-  <!-- End of Page Wrapper -->
+      		// Render the page on modern browser only.
+      		if(renderPage) {
+				// Remove loader
+		      	$('body').addClass('loaded');
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+		      	// Page transition
+		      	var allPages = $(".tm-section");
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+		      	// Handle click of "Continue", which changes to next page
+		      	// The link contains data-nav-link attribute, which holds the nav item ID
+		      	// Nav item ID is then used to access and trigger click on the corresponding nav item
+		      	var linkToAnotherPage = $("a.tm-btn[data-nav-link]");
+			    
+			    if(linkToAnotherPage != null) {
+			    	
+			    	linkToAnotherPage.on("click", function(){
+			    		var navItemToHighlight = linkToAnotherPage.data("navLink");
+			    		$("a" + navItemToHighlight).click();
+			    	});
+			    }
+		      	
+		      	// Hide all pages
+		      	allPages.hide();
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
-  <script src="startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		      	$("#tm-section-1").fadeIn();
 
-  <!-- Core plugin JavaScript-->
-  <script src="startbootstrap-sb-admin-2-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+		     	// Set up background first page
+		     	var bgImg = $("#tmNavLink1").data("bgImg");
+		     	
+		     	$.backstretch("img/" + bgImg, {fade: 500});
 
-  <!-- Custom scripts for all pages-->
-  <script src="startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
+		     	// Setup Carousel, Nav, and Nav Toggle
+			    setupCarousel();
+			    setupNav();
+			    setupNavToggle();
+			    setupFooter();
 
+			    // Resize Carousel upon window resize
+			    $(window).resize(function() {
+			    	setupCarousel();
+			    	setupFooter();
+			    });
+      		}	      	
+		});
+
+		</script>
+		
 </body>
 
 </html>
