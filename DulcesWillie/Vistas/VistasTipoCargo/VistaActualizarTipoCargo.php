@@ -43,8 +43,9 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
     <fieldset border=1>
         <legend>Formulario Tipo De Cargo <br>Actualizacion</legend>
         <form role="form" method="POST" action="Controlador.php" id="formRegistro">
-            <table>
+            <table border="1">
                 <tr>
+                    <td>Seleccione el cargo</td>
                     <td>
                         <select id='Cargo' name='Cargo_IdCargo'>
                             <?php
@@ -59,6 +60,16 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
                     </td>
                 </tr>
                 <tr>
+                    <td>Codigo tipo de cargo</td>
+                    <td>                
+                        <input class="form-control" placeholder="Codigo tipo de cargo" name="IdTipoCargo" type="text"   required="required" 
+                               value=<?php if (isset($actualizarDatosTipoCargo->IdTipoCargo)) echo $actualizarDatosTipoCargo->IdTipoCargo;?> >
+                        <div><?php if (isset($erroresValidacion['mensajesError']['IdTipoCargo'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['IdTipoCargo'] . "</font>"; ?></div>                              
+                        <!--<p class="help-block">Example block-level help text here.</p>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nombre del tipo de cargo</td>
                     <td>                
                         <input class="form-control" placeholder="Nombre tipo de cargo" name="NombreTipoCargo" type="text"   required="required" 
                                value=<?php if (isset($actualizarDatosTipoCargo->NombreTipoCargo)) echo $actualizarDatosTipoCargo->NombreTipoCargo;?> >
@@ -67,6 +78,7 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
                     </td>
                 </tr>                 
                 <tr>
+                    <td>Descripcion tipo de cargo</td>
                     <td>                  
                         <input class="form-control" placeholder="Descripcion Tipo de Cargo" name="DescripcionTipoCargo" type="text"  required="required" 
                                value=<?php if (isset($erroresValidacion['datosViejos']['DescripcionTipoCargo'])) echo "\"" . $erroresValidacion['datosViejos']['DescripcionTipoCargo'] . "\""; 
@@ -76,9 +88,11 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
                     </td>
                 </tr>                       
                 <tr>
-                    <td>            
+                    <td colspan="2">    
+                    <center>
                         <button type="reset" name="ruta" value="cancelarActualizarTipoCargo">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarTipoCargo">Actualizar Tipo De Cargo</button>
+                        </center>        
                     </td>
                 </tr>  
             </table>

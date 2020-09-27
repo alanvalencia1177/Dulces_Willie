@@ -113,6 +113,15 @@ class TipoCargoControlador
                     $_SESSION['mensaje'] = "Actualización realizada.";
                     header("location:Controlador.php?ruta=listarTipoCargo");
                     break;
+                case "eliminarTipoCargo":
+                $gestarTipoCargo = new TipoCargoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                $gestarTipoCargo->eliminar(array($this->datos['idAct'])); // BORRADO FÍSICO
+//                $gestarProveedor->eliminarLogico(array($this->datos['idAct']));// BORRADO LÓGICO
+
+                session_start();
+                $_SESSION['mensaje'] = "   Borrado exitoso!!! ";
+                header("location:Controlador.php?ruta=listarTipoCargo");
+                break;
         }
     }
 }

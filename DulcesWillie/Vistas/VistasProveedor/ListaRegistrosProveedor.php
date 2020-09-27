@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['listaDeProveedor'])) {
     $listaDeProveedor = $_SESSION['listaDeProveedor'];
-  unset($_SESSION['listaDeProveedor']);  
+    
 }
      
 ?>

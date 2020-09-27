@@ -89,6 +89,12 @@ if (isset($_SESSION['mensaje'])) {
 									<span>Persona</span>
 								</a>
 							</li>
+							<li>
+								<a href="Controlador.php?ruta=mostrarInsertarProducto" class="scrolly" data-bg-img="constructive_bg_04.jpg" data-page="#tm-section-4">
+									<i class="fas fa-comments tm-nav-fa-icon"></i>
+									<span>Compra</span>
+								</a>
+							</li>
 						</ul>
 					</nav>
 				</div>

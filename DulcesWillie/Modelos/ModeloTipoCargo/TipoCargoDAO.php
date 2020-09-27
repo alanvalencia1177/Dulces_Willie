@@ -154,4 +154,21 @@ class TipoCargoDAO extends MyCon
         }
     }
 
+     public function eliminar($sId = array()) {//Recibe llave primaria a eliminar
+        
+        $planConsulta = "delete from tipocargo ";
+        $planConsulta .= " where IdTipoCargo = :IdTipoCargo ;";
+        $eliminar = $this->Conexion->prepare($planConsulta);
+        $eliminar->bindParam(':IdTipoCargo', $sId[0], PDO::PARAM_INT);
+        $resultado = $eliminar->execute();
+
+        $this->cierreConexion();
+
+        if (!empty($resultado)) {
+            return ['eliminar' => TRUE, 'registroEliminado' => array($sId[0])];
+        } else {
+            return ['eliminar' => FALSE, 'registroEliminado' => array($sId[0])];
+        }
+    }
+
 }

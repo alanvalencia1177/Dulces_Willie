@@ -4,8 +4,10 @@
 include_once PATH . 'Controladores/ProveedorControlador.php';
 include_once PATH . 'Controladores/CargoControlador.php';
 include_once PATH . 'Controladores/TipoCargoControlador.php';
+include_once PATH . 'Controladores/ProductoControlador.php';
 include_once PATH . 'Modelos/Validaciones.php';
 include_once PATH . 'Modelos/ModeloProveedor/ValidadorProveedor.php';
+include_once PATH . 'Modelos/ModeloProducto/ValidadorProducto.php';
 include_once PATH . 'Modelos/ModeloCargo/ValidadorCargo.php';
 include_once PATH . 'Modelos/ModeloTipoCargo/ValidadorTipoCargo.php';
 include_once PATH . 'Controladores/PersonaControlador.php';
@@ -45,6 +47,16 @@ class ControladorPrincipal {
         //Tendra el control dependiendo la peticion de la variable
         switch($this->datos['ruta'])
         {
+            //-----------------------------------------------
+            //--------------Tabla Producto------------------
+            //-----------------------------------------------
+            case 'mostrarInsertarProducto':
+                    //intanciamos la clase
+                $Mostrar = new ProductoControlador($this->datos);
+                // header("Location: principal.php?contenido=Vistas/VistaCompra/VistaCompraProducto.php");
+             break;
+
+
             //-----------------------------------------------
             //--------------Tabla TipoCago------------------
             //-----------------------------------------------
