@@ -4,8 +4,8 @@ if (isset($_SESSION['listaDeCargo'])) {
 }
 
 ?>
-
-<table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
+<br><br><br><br>
+<table id="example"  style="width:100%" align="center">
     <thead>
         <tr>
             <th>IdCargo</th> 

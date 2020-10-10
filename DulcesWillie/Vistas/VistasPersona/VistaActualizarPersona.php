@@ -13,9 +13,10 @@ if (isset($_SESSION['erroresValidacion'])) {
     unset($_SESSION['erroresValidacion']);
 }
 ?>
+<center>
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de Persona</h2>
-    <h3 class="panel-title">Actualización de Persona.</h3>
+    <h2 class="panel-title">Gestión de Empelado</h2>
+    <h3 class="panel-title">Actualización de Empelado.</h3>
 </div>
 <div>
     <fieldset>
@@ -123,3 +124,4 @@ if (isset($_SESSION['erroresValidacion'])) {
         </form>
     </fieldset>
 </div>
+</center>

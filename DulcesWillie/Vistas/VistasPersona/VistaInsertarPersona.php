@@ -6,9 +6,10 @@ if (isset($_SESSION['erroresValidacion'])) {
     unset($_SESSION['erroresValidacion']);
 }
 ?>
+<center>
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de Persona</h2>
-    <h3 class="panel-title">Inserción de Persona.</h3>
+    <h2 class="panel-title">Gestión de Empleado</h2>
+    <h3 class="panel-title">Inserción de Empleado.</h3>
 </div>
 <div>
     <fieldset>
@@ -16,7 +17,7 @@ if (isset($_SESSION['erroresValidacion'])) {
             <table>
                 <tr>
                     <td>
-                   /     <input class="form-control" placeholder="Id Persona" name="IdPersona" type="number" pattern="" required="required" autofocus
+                      <input class="form-control" placeholder="Id Persona" name="IdPersona" type="number" pattern="" required="required" autofocus
                                value=<?php if (isset($erroresValidacion['datosViejos']['IdPersona'])) echo "\"" . $erroresValidacion['datosViejos']['IdPersona'] . "\""; 
                                if(isset($_SESSION['IdPersona'])) echo $_SESSION['IdPersona']; unset($_SESSION['IdPersona']);?> >
                         <div><?php if (isset($erroresValidacion['mensajesError']['IdPersona'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['IdPersona'] . "</font>"; ?> </div>  
@@ -25,7 +26,7 @@ if (isset($_SESSION['erroresValidacion'])) {
                 </tr>
                 <tr>
                     <td>
-                   /     <input class="form-control" placeholder="Documento Identificacion Persona" name="DocumentoIdentificacionPersona" type="number" pattern="" required="required" autofocus
+                      <input class="form-control" placeholder="Documento Identificacion Persona" name="DocumentoIdentificacionPersona" type="number" pattern="" required="required" autofocus
                                value=<?php if (isset($erroresValidacion['datosViejos']['DocumentoIdentificacionPersona'])) echo "\"" . $erroresValidacion['datosViejos']['DocumentoIdentificacionPersona'] . "\""; 
                                if(isset($_SESSION['DocumentoIdentificacionPersona'])) echo $_SESSION['DocumentoIdentificacionPersona']; unset($_SESSION['DocumentoIdentificacionPersona']);?> >
                         <div><?php if (isset($erroresValidacion['mensajesError']['DocumentoIdentificacionPersona'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['DocumentoIdentificacionPersona'] . "</font>"; ?> </div>  
@@ -81,3 +82,4 @@ if (isset($_SESSION['erroresValidacion'])) {
         </form>
     </fieldset>
 </div>
+</center>

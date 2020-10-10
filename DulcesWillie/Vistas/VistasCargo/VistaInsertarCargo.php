@@ -6,9 +6,13 @@ if (isset($_SESSION['erroresValidacion'])) {
     unset($_SESSION['erroresValidacion']);
 }
 ?>
+<center>
+
 <div class="panel-heading">
-    <h2 class="panel-title">Gestión de Proveedor</h2>
-    <h3 class="panel-title">Inserción de Proveedor.</h3>
+    <br><br><br><br>
+    <h2 class="panel-title">Gestión de Cargo</h2>
+    <h3 class="panel-title">Inserción de Cargo.</h3>
+    <br><br>
 </div>
 <div>
     <fieldset>
@@ -16,7 +20,7 @@ if (isset($_SESSION['erroresValidacion'])) {
             <table>
                 <tr>
                     <td>
-                   /     <input class="form-control" placeholder="Id Cargo" name="IdCargo" type="number" pattern="" required="required" autofocus
+                       <input class="form-control" placeholder="Id Cargo" name="IdCargo" type="number" pattern="" required="required" autofocus
                                value=<?php if (isset($erroresValidacion['datosViejos']['IdCargo'])) echo "\"" . $erroresValidacion['datosViejos']['IdCargo'] . "\""; 
                                if(isset($_SESSION['IdCargo'])) echo $_SESSION['IdCargo']; unset($_SESSION['IdCargo']);?> >
                         <div><?php if (isset($erroresValidacion['mensajesError']['IdCargo'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['IdCargo'] . "</font>"; ?> </div>  
@@ -46,10 +50,11 @@ if (isset($_SESSION['erroresValidacion'])) {
                 <tr>
                     <td>            
                         <button type="button" name="ruta" value="cancelarInsertarCargo">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
-                        <button type="submit" name="ruta" value="insertarCargo">Agregar Proveedor</button>
+                        <button type="submit" name="ruta" value="insertarCargo">Agregar Cargo</button>
                     </td>
                 </tr>  
             </table>
         </form>
     </fieldset>
 </div>
+</center>

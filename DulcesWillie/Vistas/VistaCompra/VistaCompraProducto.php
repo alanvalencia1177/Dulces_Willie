@@ -1,15 +1,17 @@
 <?php
-
-if( isset($_SESSION['listadoRegistrosProducto']))
+//verificamos si la sesion contiene algun dato
+if( isset($_SESSION['Resul']))
 {
     //asignando el valor a ina variable 
-    $listadoRegistrosProducto = $_SESSION['listadoRegistrosProducto'];
+    $Resul = $_SESSION['Resul'];
    //Hacemos un conteo de la variable 
-    $Conteo = count($listadoRegistrosProducto);
+    $Conteo = count($Resul);
 }
 
+
+
 echo "<pre>";
-print_r($listadoRegistrosProducto);
+print_r($_SESSION['listadoProveedor']);
 echo "</pre>";
 
 if (isset($_SESSION['erroresValidacion'])) {
@@ -28,15 +30,16 @@ if (isset($_SESSION['erroresValidacion'])) {
 							<form method="POST" name="VistaCompraProducto">
 								<td><label id="L" class="label">Seleccione el nombre del proveedor</label></td>
 								<td>
-									<select placeholder="Nombre proveedor" name="NombreProveedor" class="form-control">
-			                            <?php
-			                                //Hacemos un ciclo for para llenar el combo
-			                                for($j=0; $j<$Conteo; $j++)
-			                                {
-			                            ?>
-			                            <option value="<?php echo $Resul[$j]->IdProveedor ?>"><?php echo $Resul[$j]->IdProveedor ?> - <?php echo $Resul[$j]->NombreProveedor ?></option>
-			                            <?php } ?>
-			                        </select>
+									<!--<select placeholder="Nombre proveedor" name="NombreProveedor" class="form-control">-->
+			                         <select id='Cargo' name='Cargo_IdCargo'>
+                            <?php
+                                //Hacemos un ciclo for para llenar el combo
+                                for($j=0; $j<$Conteo; $j++)
+                                {
+                            ?>
+                            <option value="<?php echo $Resul[$j]->IdCargo ?>"><?php echo $Resul[$j]->IdCargo ?> - <?php echo $Resul[$j]->NombreCargo ?></option>
+                            <?php } ?>
+                        </select>
 								</td>
 								
 						</tr>
@@ -117,7 +120,7 @@ if (isset($_SESSION['erroresValidacion'])) {
 						</tr>
 						<tr>
 							<td colspan="4">
-								<center><input type="submit" name="Comprar" value="Comprar" class="form-control" placeholder="Campo de texto"></center>
+								<center><button type="submit" name="ruta" value="ProductoComprar" class="form-control" placeholder="Campo de texto"></center>
 							</td>
 							</form>
 						</tr>

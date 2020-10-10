@@ -6,22 +6,20 @@
         </head>
         <body>
         <center>
-            <table class="table table-responsive" id="tabla" border="1" >
+            <br><br><br><br>
+            <table id="tabla" border="1" >
             <tr>
             
                 <td >
-                   <a href="Controlador.php?ruta=mostrarInsertarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?ruta=mostrarInsertarTipoCargo"> <input type="button" width="50%" height="30%" size="50%" value="Insertar tipo cargo"/></a>
 
                 </td>
+                <td>||</td>
                 <td>
-                   <a href="Controlador.php?ruta=listarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?ruta=listarTipoCargo"> <input type="button" width="256" height="256" value="Mostar todos los tipo Cargo"/></a>
 
                 </td>
-                <td>
-                   <a href="Controlador.php?Ruta=VistaActualizarTipoCargo"> <img src="Cargo.png" width="256" height="256" /></a>
 
-                </td>
-                
             </tr>
           
             </table>

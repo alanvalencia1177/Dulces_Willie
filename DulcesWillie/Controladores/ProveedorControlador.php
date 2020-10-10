@@ -18,6 +18,10 @@ class ProveedorControlador {
         switch ($this->datos['ruta']) {
            
             
+
+            case "MenuProveedor":
+                header("Location: principal.php?contenido=Vistas/VistasProveedor/MenuProveedor.php");
+                break;
                 case 'mostrarInsertarProveedor':
     
                     /*                 * ****PRIMERA TABLA DE RELACIÓN UNO A MUCHOS CON LIBROS******************** */

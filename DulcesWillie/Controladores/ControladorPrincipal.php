@@ -1,6 +1,6 @@
 <?php
 //Incluimos la clase
-
+include_once PATH . 'Controladores/MovimientoMenuControlador.php';
 include_once PATH . 'Controladores/ProveedorControlador.php';
 include_once PATH . 'Controladores/CargoControlador.php';
 include_once PATH . 'Controladores/TipoCargoControlador.php';
@@ -50,12 +50,14 @@ class ControladorPrincipal {
             //-----------------------------------------------
             //--------------Tabla Producto------------------
             //-----------------------------------------------
-            case 'mostrarInsertarProducto':
+            case 'VistaCompraProducto':
                     //intanciamos la clase
                 $Mostrar = new ProductoControlador($this->datos);
                 // header("Location: principal.php?contenido=Vistas/VistaCompra/VistaCompraProducto.php");
              break;
-
+            case "Movimiento":
+                $Movimiento = new MovimientoMenuControlador($this->datos);    
+                break;
 
             //-----------------------------------------------
             //--------------Tabla TipoCago------------------
@@ -102,7 +104,10 @@ class ControladorPrincipal {
             
                 
             ///*****GESTIONANDO LA TABLA Proveedor********///            
-         
+         case "MenuProveedor":
+                        header("location:principal.php?contenido=Vistas/VistasProveedor/MenuProveedor.php");
+                        break;
+
             case "mostrarInsertarProveedor":
                 case "insertarProveedor":
                     if ($this->datos['ruta'] == "insertarProveedor") {

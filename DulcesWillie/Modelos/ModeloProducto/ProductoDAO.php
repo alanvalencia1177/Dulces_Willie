@@ -54,7 +54,7 @@ class ProductoDAO extends MyCon {
 
     public function insertar($registro) {
         try {
-            $query = "INSERT INTO cargo ";
+            $query = "INSERT INTO producto ";
             $query .= " (CodigoBarrasProducto, NombreProducto, Descripcion_Producto,ValorEntradaProducto,ValorSalidaProducto,Stock) ";
             $query .= " VALUES";
             $query .= "(:CodigoBarrasProducto,:NombreProducto,:Descripcion_Producto,:ValorEntradaProducto,:ValorSalidaProducto,:Stock); ";

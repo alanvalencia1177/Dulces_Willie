@@ -66,6 +66,18 @@ if (isset($_SESSION['mensaje'])) {
 					<nav id="tmMainNav" class="tm-main-nav">
 						<ul>
 							<li>
+								<a href="Principal.php" id="tmNavLink1" class="scrolly active" data-bg-img="constructive_bg_01.jpg">
+									<i class="fas fa-home tm-nav-fa-icon"></i>
+									Inicio
+								</a>
+							</li>
+							<li>
+								<a href="Controlador.php?ruta=Movimiento" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_02.jpg" data-page="#tm-section-2" data-page-type="carousel">
+									<i class="fas fa-map tm-nav-fa-icon"></i>
+									<span>Movimiento</span>
+								</a>
+							</li><!--
+							<li>
 								<a href="Controlador.php?ruta=MenuCargo" id="tmNavLink1" class="scrolly active" data-bg-img="constructive_bg_01.jpg">
 									<i class="fas fa-home tm-nav-fa-icon"></i>
 									Cargo
@@ -88,9 +100,9 @@ if (isset($_SESSION['mensaje'])) {
 									<i class="fas fa-comments tm-nav-fa-icon"></i>
 									<span>Persona</span>
 								</a>
-							</li>
+							</li>-->
 							<li>
-								<a href="Controlador.php?ruta=mostrarInsertarProducto" class="scrolly" data-bg-img="constructive_bg_04.jpg" data-page="#tm-section-4">
+								<a href="Controlador.php?ruta=VistaCompraProducto" class="scrolly" data-bg-img="constructive_bg_04.jpg" data-page="#tm-section-4">
 									<i class="fas fa-comments tm-nav-fa-icon"></i>
 									<span>Compra</span>
 								</a>
@@ -106,7 +118,7 @@ if (isset($_SESSION['mensaje'])) {
 
 				
 						
-				<h1 class="h3 mb-4 text-gray-800">Aquí la funcionalidad!!!!</h1>
+				<br><br>
 				<?php
 
 				//Hacemosunacondicion que nos permitira si tiene algo seteado 

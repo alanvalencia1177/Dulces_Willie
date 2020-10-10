@@ -6,22 +6,19 @@
         </head>
         <body>
         <center>
-            <table class="table table-responsive" id="tabla" border="1" >
+            <table id="tabla" border="1" >
             <tr>
             
                 <td >
-                   <a href="Controlador.php?Ruta=InsertarProveedor"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?Ruta=mostrarInsertarProveedor"> <input type="button" width="256" height="256" value="Insertar proveedores"/></a>
 
                 </td>
+                <td>||</td>
                 <td>
-                   <a href="Controlador.php?Ruta=listarProveedor"> <img src="Cargo.png" width="256" height="256" /></a>
+                   <a href="Controlador.php?Ruta=listarProveedor"><input type="button" width="256" height="256" value="Listadode todos losproveedores"/></a>
 
                 </td>
-                <td>
-                   <!--<a href="Controlador.php?Ruta=FormActualizarCargo"> <img src="Cargo.png" width="256" height="256" /></a>-->
-
-                </td>
-                
+   
             </tr>
           
             </table>
