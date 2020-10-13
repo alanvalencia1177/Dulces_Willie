@@ -19,13 +19,7 @@ if (isset($_SESSION['erroresValidacion'])) {
         <form role="form" method="POST" action="Controlador.php" id="formRegistro">
             <table>
                 <tr>
-                    <td>
-                       <input class="form-control" placeholder="Id Cargo" name="IdCargo" type="number" pattern="" required="required" autofocus
-                               value=<?php if (isset($erroresValidacion['datosViejos']['IdCargo'])) echo "\"" . $erroresValidacion['datosViejos']['IdCargo'] . "\""; 
-                               if(isset($_SESSION['IdCargo'])) echo $_SESSION['IdCargo']; unset($_SESSION['IdCargo']);?> >
-                        <div><?php if (isset($erroresValidacion['mensajesError']['IdCargo'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['IdCargo'] . "</font>"; ?> </div>  
-                   <!--<p class="help-block">Example block-level help text here.</p>-->
-                    </td>
+                   
                 </tr>
               
                 <tr>

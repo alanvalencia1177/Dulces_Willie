@@ -17,15 +17,7 @@ if (isset($_SESSION['erroresValidacion'])) {
     <fieldset>
         <form role="form" method="POST" action="Controlador.php" id="formRegistro">
             <table>
-                <tr>
-                    <td>
-                        <input class="form-control" placeholder="Id Proveedor" name="IdProveedor" type="number" pattern="" required="required" autofocus
-                               value=<?php if (isset($erroresValidacion['datosViejos']['IdProveedor'])) echo "\"" . $erroresValidacion['datosViejos']['IdProveedor'] . "\""; 
-                               if(isset($_SESSION['IdProveedor'])) echo $_SESSION['IdProveedor']; unset($_SESSION['IdProveedor']);?> >
-                        <div><?php if (isset($erroresValidacion['mensajesError']['IdProveedor'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['IdProveedor'] . "</font>"; ?> </div>  
-                   <!--<p class="help-block">Example block-level help text here.</p>-->
-                    </td>
-                </tr>
+                
                 <tr>
                     <td>                
                         <input class="form-control" placeholder="Nombre Proveedor" name="NombreProveedor" type="text"   required="required" 
