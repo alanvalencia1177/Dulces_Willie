@@ -107,6 +107,7 @@ class ControladorPrincipal {
              case "MenuProveedor":
                         header("location:principal.php?contenido=Vistas/VistasProveedor/MenuProveedor.php");
                         break;
+<<<<<<< HEAD
             case "mostrarInsertarProveedor":
                     header("location:principal.php?contenido=Vistas/VistasProveedor/VistaInsertarProveedor.php");
     
@@ -115,6 +116,9 @@ class ControladorPrincipal {
                     header("location:principal.php?contenido=Vistas/VistasProveedor/ListaRegistrosProveedor.php");
     
                   break;
+=======
+        
+>>>>>>> ae71c163d2d6de06e66b54e0467edfcc4a73efa0
 
             case "mostrarInsertarProveedor":
                 case "insertarProveedor":
