@@ -1,18 +1,12 @@
 <?php
 //verificamos si la sesion contiene algun dato
-if( isset($_SESSION['Resul']))
-{
+if (isset($_SESSION['listaDeProveedor'])) {
+    $listaDeProveedor = $_SESSION['listaDeProveedor'];
     //asignando el valor a ina variable 
-    $Resul = $_SESSION['Resul'];
+    $listaDeProveedor = $_SESSION['listaDeProveedor'];
    //Hacemos un conteo de la variable 
-    $Conteo = count($Resul);
+    $Conteo = count($listaDeProveedor);
 }
-
-
-
-echo "<pre>";
-print_r($_SESSION['listadoProveedor']);
-echo "</pre>";
 
 if (isset($_SESSION['erroresValidacion'])) {
     $erroresValidacion = $_SESSION['erroresValidacion'];
@@ -31,13 +25,13 @@ if (isset($_SESSION['erroresValidacion'])) {
 								<td><label id="L" class="label">Seleccione el nombre del proveedor</label></td>
 								<td>
 									<!--<select placeholder="Nombre proveedor" name="NombreProveedor" class="form-control">-->
-			                         <select id='Cargo' name='Cargo_IdCargo'>
+			                         <select id='Proveedor' name='IdProveedor'>
                             <?php
                                 //Hacemos un ciclo for para llenar el combo
                                 for($j=0; $j<$Conteo; $j++)
                                 {
                             ?>
-                            <option value="<?php echo $Resul[$j]->IdCargo ?>"><?php echo $Resul[$j]->IdCargo ?> - <?php echo $Resul[$j]->NombreCargo ?></option>
+                            <option value="<?php echo $listaDeProveedor[$j]->IdProveedor ?> - <?phplistaDeProveedor[$j]->NombreProveedor ?>"><?php echo $listaDeProveedor[$j]->IdProveedor ?> - <?php echo $listaDeProveedor[$j]->NombreProveedor ?></option>
                             <?php } ?>
                         </select>
 								</td>
@@ -105,7 +99,7 @@ if (isset($_SESSION['erroresValidacion'])) {
 						<tr>
 							<td><label class="label" id="L">Estado</label></td>
 							<td>
-								<select  name="Estado" class="form-control">
+								<select  name="Estado" class="form-control" value="Seleccion">
 										<option>
 											Activo
 										</option>
@@ -119,8 +113,9 @@ if (isset($_SESSION['erroresValidacion'])) {
 								</td>
 						</tr>
 						<tr>
+							<td><a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento" class="form-control">Atras</button></a></td>
 							<td colspan="4">
-								<center><button type="submit" name="ruta" value="ProductoComprar" class="form-control" placeholder="Campo de texto"></center>
+								<center><button type="submit" name="ruta" value="ProductoComprar" class="form-control" placeholder="Campo de texto">Comprar ´</button></center>
 							</td>
 							</form>
 						</tr>

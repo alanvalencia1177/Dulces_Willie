@@ -23,7 +23,7 @@ if (isset($_SESSION['listaDeTipoCargo'])) {
             <tr>
                 <td><?php echo $listaDeTipoCargo[$i]->IdTipoCargo; ?></td>  
                 <td><?php echo $listaDeTipoCargo[$i]->NombreTipoCargo; ?></td> 
-                
+                <td><?php echo $listaDeTipoCargo[$i]->NombreTipoCargo; ?></td> 
                 <!--<td>d>-->  
                 <td><a href="Controlador.php?ruta=actualizarTipoCargo&idAct=<?php echo $listaDeTipoCargo[$i]->IdTipoCargo; ?>">Actualizar</a></td>  
                 <td><a href="Controlador.php?ruta=eliminarTipoCargo&idAct=<?php echo $listaDeTipoCargo[$i]->IdTipoCargo; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
@@ -32,6 +32,8 @@ if (isset($_SESSION['listaDeTipoCargo'])) {
         } ?>
     </tbody>
 </table>
+<br>
+<a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a>
    
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

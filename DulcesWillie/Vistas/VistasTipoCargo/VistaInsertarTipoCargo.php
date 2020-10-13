@@ -31,19 +31,17 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
     </td>
 </tr>
 <tr>
-    <tr>
-<td rowspan="1">
-    <div class="panel-heading">
-        <img src = "Cargo.png">
-    </div>
-    </td>
-    </tr>
     <td >
+    <center>
     <div>
+        
     <fieldset>
         <legend>Formulario Tipo de Cargo</legend>
         <form role="form" method="POST" action="Controlador.php" id="formRegistro">
             <table>
+                <tr>
+                    <td>Seleccione el cargo</td>
+                </tr>
                 <tr>
                     <td>
                         <select id='Cargo' name='Cargo_IdCargo'>
@@ -56,6 +54,9 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
                             <?php } ?>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td>Nombre tipo cargo</td>
                 </tr>
                 <tr>
                     <td>                
@@ -78,7 +79,10 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
                         
                         <!--<p class="help-block">Example block-level help text here.</p>-->
                     </td>
-                </tr>                 
+                </tr>  
+                <tr>
+                    <td>Descripcion tipo cargo</td>
+                </tr>               
                 <tr>
                     <td>                  
                         <input class="form-control" placeholder="Descripcion Tipo de Cargo" name="DescripcionTipoCargo" type="text"  required="required" 
@@ -89,8 +93,9 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
                     </td>
                 </tr>                       
                 <tr>
-                    <td>            
-                        <button type="button" name="ruta" value="cancelarInsertarTipoCargo">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                    <td>    
+                        <a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a>&nbsp;&nbsp;||&nbsp;&nbsp;         
+                        <button type="reset" name="ruta" value="cancelarInsertarTipoCargo">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="insertarTipoCargo">Agregar Proveedor</button>
                     </td>
                 </tr>  
@@ -99,8 +104,11 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
     </fieldset>
    
 </div>
+</center>
 </td>
-<td colspan="2">
+</tr>
+<tr>
+<td colspan="0">
 <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
@@ -120,7 +128,7 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
             <tr>
                 <td><?php echo $listaDeTipoCargo[$i]->IdTipoCargo; ?></td>  
                 <td><?php echo $listaDeTipoCargo[$i]->NombreTipoCargo; ?></td> 
-                
+                <td><?php echo $listaDeTipoCargo[$i]->NombreTipoCargo; ?></td> 
                 <!--<td>d>-->  
                 <td><a href="Controlador.php?ruta=actualizarTipoCargo&idAct=<?php echo $listaDeTipoCargo[$i]->IdTipoCargo; ?>">Actualizar</a></td>  
                 <td><a href="Controlador.php?ruta=eliminarTipoCargo&idAct=<?php echo $listaDeTipoCargo[$i]->IdTipoCargo; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
@@ -130,6 +138,7 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
     </tbody>
 </table>
     </td>
+</tr>
     </table>
 
 

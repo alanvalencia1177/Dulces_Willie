@@ -90,6 +90,7 @@ if (isset($_SESSION['actualizarDatosTipoCargo'])) {
                 <tr>
                     <td colspan="2">    
                     <center>
+                        <a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a>&nbsp;&nbsp;||&nbsp;&nbsp; 
                         <button type="reset" name="ruta" value="cancelarActualizarTipoCargo">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarTipoCargo">Actualizar Tipo De Cargo</button>
                         </center>        
