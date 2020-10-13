@@ -79,7 +79,7 @@
               <li><a href="Controlador.php?ruta=listarCargo">
                   Listado de los cargos
               </a></li>
-              <li><a href="#">Enlace 2.3</a></li>
+            
             </ul>
           </li>
           <li><a href="#">Tipo Cargo</a>
