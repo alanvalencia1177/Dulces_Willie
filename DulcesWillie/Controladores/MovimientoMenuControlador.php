@@ -20,12 +20,7 @@ class MovimientoMenuControlador
             case "Movimiento":
                 header("Location: Principal.php?contenido=Vistas/VistasMovimiento/MovimientoMenu.php");
                 break;
-            case "mostrarInsertarTipoCargo":
-                header("location:principal.php?contenido=Vistas/VistasTipoCargo/VistaInsertarTipoCargo.php");
-                break;
-            case "VistaActualizarTipoCargo":
-                header("Location: Principal.php?contenido=Vistas/VistasTipoCargo/VistaActualizarTipoCargo.php");
-                break;
+           
           }
 }
 }

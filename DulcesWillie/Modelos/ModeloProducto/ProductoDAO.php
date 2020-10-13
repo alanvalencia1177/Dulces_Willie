@@ -32,7 +32,7 @@ class ProductoDAO extends MyCon {
     public function seleccionarId($sId) {
 
         $planConsulta = "select * from Producto ";
-        $planConsulta .= " where IdProducto = ? ;";
+        $planConsulta .= " where CodigoBarrasProducto = ? ;";
 
         $listar = $this->Conexion->prepare($planConsulta);
         $listar->execute(array($sId));

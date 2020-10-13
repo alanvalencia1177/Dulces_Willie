@@ -32,7 +32,8 @@ if (isset($_SESSION['listaDeCargo'])) {
             <?php $i++;
         } ?>
     </tbody>
-</table>
+</table><br>
+<a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a> 
    
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

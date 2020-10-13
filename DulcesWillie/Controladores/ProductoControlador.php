@@ -36,8 +36,18 @@ class ProductoControlador {
                     break;
            
             case 'ProductoComprar':
-               
-                    $insetarProducto = new ProductoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);               
+                    //Buscar el producto
+                    //Instanciamos la clase
+                    $BuscarProdcucto = new ProductoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                    //Llamamos al metodo
+                    $BuscoProducto = $BuscarProdcucto->seleccionarId($this->datos['CodigoBarrasProducto']);
+                     echo "<pre>";
+                     print_r($BuscoProducto);
+                     echo "</pre>";
+                    //Verificamos la consulta
+                    if (!$BuscoProducto['exitoSeleccionId'])
+                    {
+                     $insetarProducto = new ProductoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);               
                     $insertoProducto = $insetarProducto->insertar($this->datos);
                     
                     $exitoInsercionProducto = $insertoProducto['inserto'];
@@ -45,10 +55,24 @@ class ProductoControlador {
                     $resultadoInsercionProducto = $insertoProducto['resultado'];                //Traer el id con que quedó el Proveedor de lo contrario la excepción o fallo  
 
                     session_start();
-                    $_SESSION['mensaje'] = "Registrado " . $this->datos['IdProducto'] . " con éxito.  Agregado Nuevo Producto con " . $resultadoInsercionProducto;
+                    $_SESSION['mensaje'] = "Registrado " . $this->datos['NombreProducto'] . " con éxito.  Agregado Nuevo Producto con " . $resultadoInsercionProducto;
 
                     header("location:Controlador.php?ruta=VistaCompraProducto");
-               
+                    }
+                    else{
+                        session_start();
+                    $_SESSION['NombreProducto'] = $this->datos['NombreProducto'];
+                    $_SESSION['Descripcion_Producto'] = $this->datos['Descripcion_Producto'];
+                    $_SESSION['CodigoBarrasProducto'] = $this->datos['CodigoBarrasProducto'];
+                    $_SESSION['Stock'] = $this->datos['Stock'];
+                    $_SESSION['ValorEntradaProducto'] = $this->datos['ValorEntradaProducto'];
+                    $_SESSION['ValorSalidaProducto'] = $this->datos['ValorSalidaProducto'];
+                    $_SESSION['Estado'] = $this->datos['Estado'];
+                    
+                    $_SESSION['mensaje'] = "   El código " . $this->datos['CodigoBarrasProducto'] . " ya existe en el sistema.";
+                    }
+                    
+               header("location:Controlador.php?ruta=VistaCompraProducto");
                 break;
             case "listarProveedor": //provisionalmente para trabajar con datatables
 

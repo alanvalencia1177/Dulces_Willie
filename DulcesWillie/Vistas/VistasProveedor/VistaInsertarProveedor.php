@@ -6,17 +6,20 @@ if (isset($_SESSION['erroresValidacion'])) {
     unset($_SESSION['erroresValidacion']);
 }
 ?>
+<br>
+<center>
 <div class="panel-heading">
     <h2 class="panel-title">Gestión de Proveedor</h2>
     <h3 class="panel-title">Inserción de Proveedor.</h3>
 </div>
+
 <div>
     <fieldset>
         <form role="form" method="POST" action="Controlador.php" id="formRegistro">
             <table>
                 <tr>
                     <td>
-                   /     <input class="form-control" placeholder="Id Proveedor" name="IdProveedor" type="number" pattern="" required="required" autofocus
+                        <input class="form-control" placeholder="Id Proveedor" name="IdProveedor" type="number" pattern="" required="required" autofocus
                                value=<?php if (isset($erroresValidacion['datosViejos']['IdProveedor'])) echo "\"" . $erroresValidacion['datosViejos']['IdProveedor'] . "\""; 
                                if(isset($_SESSION['IdProveedor'])) echo $_SESSION['IdProveedor']; unset($_SESSION['IdProveedor']);?> >
                         <div><?php if (isset($erroresValidacion['mensajesError']['IdProveedor'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['IdProveedor'] . "</font>"; ?> </div>  
@@ -51,7 +54,8 @@ if (isset($_SESSION['erroresValidacion'])) {
                     </td>
                 </tr>                       
                 <tr>
-                    <td>            
+                    <td>   
+                        <a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a>&nbsp;&nbsp;||&nbsp;&nbsp;          
                         <button type="button" name="ruta" value="cancelarInsertarProveedor">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="insertarProveedor">Agregar Proveedor</button>
                     </td>
@@ -60,6 +64,6 @@ if (isset($_SESSION['erroresValidacion'])) {
         </form>
     </fieldset>
 </div>
-
+</center>
 
 

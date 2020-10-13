@@ -73,8 +73,9 @@ if (isset($_SESSION['erroresValidacion'])) {
                 </tr>
                                                     
                 <tr>
-                    <td>            
-                        <button type="button" name="ruta" value="cancelarInsertarPersona">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
+                    <td> 
+                        <a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a>&nbsp;&nbsp;||&nbsp;&nbsp;            
+                        <button type="reset" name="ruta" value="cancelarInsertarPersona">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="insertarPersona">Agregar Proveedor</button>
                     </td>
                 </tr>  

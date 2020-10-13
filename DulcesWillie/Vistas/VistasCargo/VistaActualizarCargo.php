@@ -70,7 +70,8 @@ if (isset($_SESSION['erroresValidacion'])) {
                 </tr>  
                              
                 <tr>            
-                    <td>            
+                    <td>    
+                        <a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a>        
                         <button type="reset" name="ruta" value="cancelarActualizarCargo">Cancelar</button>&nbsp;&nbsp;||&nbsp;&nbsp;
                         <button type="submit" name="ruta" value="confirmaActualizarCargo">Actualizar Proveedor</button>
                     </td>

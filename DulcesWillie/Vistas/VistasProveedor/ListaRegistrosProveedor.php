@@ -2,16 +2,10 @@
 if (isset($_SESSION['listaDeProveedor'])) {
     $listaDeProveedor = $_SESSION['listaDeProveedor'];
 }
-<<<<<<< HEAD
-  
-  echo "<pre>";
-  print_r($_SESSION['listaDeProveedor']);
-  echo "</pre>";   
-=======
 
->>>>>>> ae71c163d2d6de06e66b54e0467edfcc4a73efa0
 ?>
-
+<center>
+<div>
 <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
@@ -42,7 +36,10 @@ if (isset($_SESSION['listaDeProveedor'])) {
         } ?>
     </tbody>
 </table>
-   
+</div>
+</center>
+<br>
+<a href="Controlador.php?ruta=Movimiento"><button type="button" name="ruta" value="Movimiento">Atras</button></a>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
