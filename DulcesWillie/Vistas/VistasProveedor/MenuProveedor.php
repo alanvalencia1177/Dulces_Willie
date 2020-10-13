@@ -10,12 +10,12 @@
             <tr>
             
                 <td >
-                   <a href="Controlador.php?Ruta=mostrarInsertarProveedor"> <input type="button" width="256" height="256" value="Insertar proveedores"/></a>
+                   <a href="Controlador.php?ruta=mostrarInsertarProveedor"> <input type="button" width="256" height="256" value="Insertar proveedores"/></a>
 
                 </td>
                 <td>||</td>
                 <td>
-                   <a href="Controlador.php?Ruta=listarProveedor"><input type="button" width="256" height="256" value="Listadode todos losproveedores"/></a>
+                   <a href="Controlador.php?ruta=listarProveedor"><input type="button" width="256" height="256" value="Listado de todos losproveedores"/></a>
 
                 </td>
    

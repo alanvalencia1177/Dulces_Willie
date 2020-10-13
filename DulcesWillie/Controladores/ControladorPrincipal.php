@@ -104,9 +104,10 @@ class ControladorPrincipal {
             
                 
             ///*****GESTIONANDO LA TABLA Proveedor********///            
-         case "MenuProveedor":
+             case "MenuProveedor":
                         header("location:principal.php?contenido=Vistas/VistasProveedor/MenuProveedor.php");
                         break;
+        
 
             case "mostrarInsertarProveedor":
                 case "insertarProveedor":
@@ -122,7 +123,7 @@ class ControladorPrincipal {
                         $ProveedorControlador = new ProveedorControlador($this->datos);
                     }
                     break;
-                case "listarProveedor":
+            case "listarProveedor":
                     $ProveedorControlador = new ProveedorControlador($this->datos);
     
                     break;
