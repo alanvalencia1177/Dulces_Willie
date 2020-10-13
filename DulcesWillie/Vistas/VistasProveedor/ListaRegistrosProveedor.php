@@ -2,14 +2,7 @@
 if (isset($_SESSION['listaDeProveedor'])) {
     $listaDeProveedor = $_SESSION['listaDeProveedor'];
 }
-<<<<<<< HEAD
   
-  echo "<pre>";
-  print_r($_SESSION['listaDeProveedor']);
-  echo "</pre>";   
-=======
-
->>>>>>> ae71c163d2d6de06e66b54e0467edfcc4a73efa0
 ?>
 
 <table id="example" class="table-responsive table-hover table-bordered table-striped" style="width:100%">

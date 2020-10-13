@@ -29,8 +29,6 @@ if (isset($_SESSION['mensaje'])) {
 	<link rel="stylesheet" href="css/fontawesome-all.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css" />
-	<link rel="stylesheet" type="text/css" href="slick/slick.css" />
-	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
 	<link rel="stylesheet" href="css/tooplate-style.css">
 
 	<script>
