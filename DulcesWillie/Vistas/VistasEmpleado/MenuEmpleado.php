@@ -10,11 +10,11 @@
             <tr>
             
                 <td>
-                   <a href="Controlador.php?ruta=listarPersona"> <input type="button" width="256" height="256" value="Ver todos los empelados"/></a>
+                   <a href="Controlador.php?ruta=listarEmpleado"> <input type="button" width="256" height="256" value="Ver todos los empelados"/></a>
 
                 </td>
                 <td >
-                   <a href="Controlador.php?ruta=mostrarInsertarPersona"> <input type="button" width="256" height="256" value="Gestor empelado"/></a>
+                   <a href="Controlador.php?ruta=mostrarInsertarEmpleado"> <input type="button" width="256" height="256" value="Gestor empelado"/></a>
 
                 </td>
                

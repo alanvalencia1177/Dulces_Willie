@@ -2,7 +2,7 @@
 if (isset($_SESSION['listaDeProveedor'])) {
     $listaDeProveedor = $_SESSION['listaDeProveedor'];
 }
-
+  
 ?>
 <center>
 <div>
