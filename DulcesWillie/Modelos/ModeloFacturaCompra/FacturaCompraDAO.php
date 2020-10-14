@@ -66,17 +66,19 @@ class FacturaCompraDAO extends MyCon
     
     public function InsertarDetFacturaCompra($registro) {
         try {
-           $query = " insert into detfacturacompra (";
-           $query .= "IdFacturaCompra,IdProducto)";
-           $query .= " values(:CodigoBarrasProducto1,:CodigoBarrasProducto2);";
-
-            $inserta = $this->Conexion->prepare($query);
             session_start();
-
             $IdFacturaCompra = $_SESSION['CodigoBarrasProducto1'];
             $IdProducto = $_SESSION['CodigoBarrasProducto2'];
-            $inserta->bindParam(':CodigoBarrasProducto1', $registro['IdFacturaCompra']);
-            $inserta->bindParam(':CodigoBarrasProducto2' , $registro['IdProducto']);
+           $query = " insert into detfacturacompra (";
+           $query .= "IdFacturaCompra,IdProducto)";
+           $query .= " values(IdFacturaCompra,IdProducto);";
+
+            $inserta = $this->Conexion->prepare($query);
+            
+
+            
+            $inserta->bindParam('IdFacturaCompra', $registro['IdFacturaCompra']);
+            $inserta->bindParam('IdProducto' , $registro['IdProducto']);
 
             $insercion = $inserta->execute();
 
