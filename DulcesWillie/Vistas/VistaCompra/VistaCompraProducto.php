@@ -12,6 +12,10 @@ if (isset($_SESSION['erroresValidacion'])) {
     $erroresValidacion = $_SESSION['erroresValidacion'];
     unset($_SESSION['erroresValidacion']);
 }
+if (isset($_SESSION['BuscarId'])) {
+    $BuscarId = $_SESSION['BuscarId'];
+    
+}
 ?>
 <div class="panel panel-default">
 						<table class="table table-responsive" id="tabla" >
@@ -21,7 +25,7 @@ if (isset($_SESSION['erroresValidacion'])) {
 								</td>
 							</tr>
 						<tr>
-							<form method="POST" name="VistaCompraProducto">
+							<form method="POST" name="VistaCompraProducto" action="Controlador.php">
 								<td><label id="L" class="label">Seleccione el nombre del proveedor</label></td>
 								<td>
 									<!--<select placeholder="Nombre proveedor" name="NombreProveedor" class="form-control">-->
@@ -31,11 +35,34 @@ if (isset($_SESSION['erroresValidacion'])) {
                                 for($j=0; $j<$Conteo; $j++)
                                 {
                             ?>
-                            <option value="<?php echo $listaDeProveedor[$j]->IdProveedor ?> - <?phplistaDeProveedor[$j]->NombreProveedor ?>"><?php echo $listaDeProveedor[$j]->IdProveedor ?> - <?php echo $listaDeProveedor[$j]->NombreProveedor ?></option>
+                            <option value="<?php echo $listaDeProveedor[$j]->IdProveedor ?>"><?php echo $listaDeProveedor[$j]->IdProveedor ?> - <?php echo $listaDeProveedor[$j]->NombreProveedor ?></option>
                             <?php } ?>
                         </select>
 								</td>
+
 								
+						</tr>
+						<tr>
+							<td>
+								<label class="label" id="L">Fecha de la factura</label>
+							</td>
+							<td>
+								<input type="date" name="FechaFacturaCompra" id="txt" class="form-control"required="required">
+							</td>
+							<td><label class="label" id="L">Estado de la factura</label></td>
+							<td>
+								<select  name="EstadoFacturaCompra" class="form-control" value="Seleccion">
+										<option>
+											1
+										</option>
+										<option>
+											Por pagar
+										</option>
+										<option>
+											Vencida
+										</option>
+								</select>  
+								</td>
 						</tr>
 						<tr>
 							
@@ -117,10 +144,29 @@ if (isset($_SESSION['erroresValidacion'])) {
 							<td colspan="4">
 								<center><button type="submit" name="ruta" value="ProductoComprar" class="form-control" placeholder="Campo de texto">Comprar ´</button></center>
 							</td>
-							</form>
+							
 						</tr>
+						<!-------------------------------------------------------->
 						<tr>
-							<th colspan="4" id="Borde"><h1>        </h1></th>
+							<th colspan="4" id="Borde"><input type="text" name="IdEmpleado" class="form-control" id="txt"required="required" placeholder="Codigo empleado"
+                               value=<?php if (isset($erroresValidacion['datosViejos']['IdEmpleado'])) echo "\"" . $erroresValidacion['datosViejos']['IdEmpleado'] . "\"";
+                                if(isset($_SESSION['IdEmpleado'])) echo $_SESSION['IdEmpleado']; unset($_SESSION['IdEmpleado']); ?> >
+                        <div><?php if (isset($erroresValidacion['mensajesError']['IdEmpleado'])) echo "<font color='red'>" . $erroresValidacion['mensajesError']['IdEmpleado'] . "</font>"; ?></div></th>
+						</tr>
+
+
+						
+
+						<tr>
+							<th colspan="4" id="Borde"><input type="text" name="CodigoBarrasProducto1" class="form-control" id="txt" placeholder="CodigoBarrasProducto"
+                               value=<?php if(isset($_SESSION['CodigoBarrasProducto1'])) echo $_SESSION['CodigoBarrasProducto1']; unset($_SESSION['CodigoBarrasProducto1']); ?> >
+                        </th>
+						</tr>
+
+						<tr>
+							<th colspan="4" id="Borde"><input type="text" name="CodigoBarrasProducto2" class="form-control" id="txt" placeholder="Id Producto" 
+                               value=<?php if(isset($_SESSION['CodigoBarrasProducto2']))echo $_SESSION['CodigoBarrasProducto2']; unset($_SESSION['CodigoBarrasProducto2']); ?> >
+                       </th>
 						</tr>
 						<tr>
 							<th colspan="4" id="Borde"><h1>        </h1></th>
@@ -130,5 +176,6 @@ if (isset($_SESSION['erroresValidacion'])) {
 				</div>
 				     	</div>
 				     </div>
+				     </form>
 				 </div>
 					

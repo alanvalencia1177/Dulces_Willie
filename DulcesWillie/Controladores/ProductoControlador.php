@@ -1,7 +1,7 @@
 <?php
 
 include_once PATH . 'Modelos/ModeloProducto/ProductoDAO.php';
-
+include_once PATH . 'Modelos/ModeloFacturaCompra/FacturaCompraDAO.php';
 
 
 class ProductoControlador {
@@ -12,6 +12,7 @@ class ProductoControlador {
         $this->datos = $datos;
         $this->ProductoControlador();
     }
+
 
     public function ProductoControlador() {
 
@@ -38,23 +39,48 @@ class ProductoControlador {
             case 'ProductoComprar':
                     //Buscar el producto
                     //Instanciamos la clase
-                    $BuscarProdcucto = new ProductoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                    $BuscarProducto = new ProductoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
                     //Llamamos al metodo
-                    $BuscoProducto = $BuscarProdcucto->seleccionarId($this->datos['CodigoBarrasProducto']);
-                     echo "<pre>";
-                     print_r($BuscoProducto);
-                     echo "</pre>";
+                    $BuscoProducto = $BuscarProducto->seleccionarId($this->datos['CodigoBarrasProducto']);
                     //Verificamos la consulta
                     if (!$BuscoProducto['exitoSeleccionId'])
                     {
                      $insetarProducto = new ProductoDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);               
                     $insertoProducto = $insetarProducto->insertar($this->datos);
-                    
-                    $exitoInsercionProducto = $insertoProducto['inserto'];
                    
+                    $exitoInsercionProducto = $insertoProducto['inserto'];
+                    
                     $resultadoInsercionProducto = $insertoProducto['resultado'];                //Traer el id con que quedó el Proveedor de lo contrario la excepción o fallo  
 
+                    //Instanciamos la clase dela factura
+                    $insertoFactura = new FacturaCompraDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                    //Llamamos el metodo
+                    $insertarFatura = $insertoFactura->insertar($this->datos);
+                    //le damos los datos 
+                   
+                    $exitoInsercionFactura = $insertarFatura['inserto1'];
+                    $resultadoInsercionFactura = $insertarFatura['resultado1'];
+
                     session_start();
+                    
+                    //Id de la factura
+                    $_SESSION['CodigoBarrasProducto1'] = $resultadoInsercionFactura;
+                    //Id del Producto
+                     $_SESSION['CodigoBarrasProducto2'] = $resultadoInsercionProducto;
+                        $InsertarDetFacturaCompra = new FacturaCompraDAO(SERVIDOR, BASE, USUARIO_BD, CONTRASENIA_BD);
+                    //Llamamos la funcion
+                    $InsertoDetfacturaCompra = $InsertarDetFacturaCompra->InsertarDetFacturaCompra($this->datos);
+                    //le damos los datos 
+                   
+                    $exitoInsercionDetfacturaCompra = $InsertoDetfacturaCompra['inserto1'];
+                    $resultadoInsercionDetfacturaCompra = $InsertoDetfacturaCompra['resultado1'];
+                    session_start();
+                        $_SESSION['mensaje'] = "Bien";
+                     
+                    $CodigoBarrasProducto = $_SESSION['CodigoBarrasProducto1'];
+                    //Instanciamos la clase dela factura
+                    
+
                     $_SESSION['mensaje'] = "Registrado " . $this->datos['NombreProducto'] . " con éxito.  Agregado Nuevo Producto con " . $resultadoInsercionProducto;
 
                     header("location:Controlador.php?ruta=VistaCompraProducto");

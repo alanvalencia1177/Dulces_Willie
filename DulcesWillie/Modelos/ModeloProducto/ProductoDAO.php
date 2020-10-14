@@ -50,23 +50,26 @@ class ProductoDAO extends MyCon {
             return ['exitoSeleccionId' => FALSE, 'registroEncontrado' => $registroEncontrado];
         }
     }
+    
+
 
 
     public function insertar($registro) {
         try {
             $query = "INSERT INTO producto ";
-            $query .= " (CodigoBarrasProducto, NombreProducto, Descripcion_Producto,ValorEntradaProducto,ValorSalidaProducto,Stock) ";
+            $query .= " ( NombreProducto, Descripcion_Producto,ValorEntradaProducto,ValorSalidaProducto,Stock,CodigoBarrasProducto) ";
             $query .= " VALUES";
-            $query .= "(:CodigoBarrasProducto,:NombreProducto,:Descripcion_Producto,:ValorEntradaProducto,:ValorSalidaProducto,:Stock); ";
+            $query .= "(:NombreProducto,:Descripcion_Producto,:ValorEntradaProducto,:ValorSalidaProducto,:Stock,:CodigoBarrasProducto); ";
 
             $inserta = $this->Conexion->prepare($query);
 
-            $inserta->bindParam(":CodigoBarrasProducto", $registro['CodigoBarrasProducto']);
+            
             $inserta->bindParam(":NombreProducto", $registro['NombreProducto']);
             $inserta->bindParam(":Descripcion_Producto", $registro['Descripcion_Producto']);
             $inserta->bindParam(":ValorEntradaProducto", $registro['ValorEntradaProducto']);
             $inserta->bindParam(":ValorSalidaProducto", $registro['ValorSalidaProducto']);
             $inserta->bindParam(":Stock", $registro['Stock']);
+            $inserta->bindParam(":CodigoBarrasProducto", $registro['CodigoBarrasProducto']);
             $insercion = $inserta->execute();
 
             $clavePrimariaConQueInserto = $this->Conexion->lastInsertId();

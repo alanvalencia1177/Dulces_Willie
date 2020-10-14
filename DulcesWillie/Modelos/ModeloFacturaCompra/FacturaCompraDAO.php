@@ -19,7 +19,7 @@ class FacturaCompraDAO extends MyCon
     public function SeleccionarTodos()
     { 
         //Definimos una variable la cual tendra la sentencia MySQL
-        $FacturaCompra ="Select * From Cargo";
+        $FacturaCompra ="Select * From Producto";
         //Declaramos una variable la cual Contendra la 
         //la informacion que que tiene la variable "$DetFacturaCompra"
         //Funcion prepare nos dara integridad segura de los datos que se estan enviando 
@@ -40,6 +40,54 @@ class FacturaCompraDAO extends MyCon
         return $ListarFacturaCompra;
 
     }
+    public function insertar($registro) {
+        try {
+           $query = " insert into facturacompra (";
+           $query .= "FechaFacturaCompra,EstadoFacturaCompra,IdProveedor,IdEmpleado)";
+           $query .= " values(:FechaFacturaCompra,:EstadoFacturaCompra,:IdProveedor,:IdEmpleado);";
+
+            $inserta = $this->Conexion->prepare($query);
+
+            $inserta->bindParam(":FechaFacturaCompra", $registro['FechaFacturaCompra']);
+            $inserta->bindParam(":EstadoFacturaCompra", $registro['EstadoFacturaCompra']);
+            $inserta->bindParam(":IdProveedor", $registro['IdProveedor']);
+            $inserta->bindParam(":IdEmpleado", $registro['IdEmpleado']);
+            $insercion = $inserta->execute();
+
+            $clavePrimariaConQueInserto = $this->Conexion->lastInsertId();
+
+
+
+            return ['inserto1' => 1, 'resultado1' => $clavePrimariaConQueInserto];
+        } catch (PDOException $pdoExc) {
+            return ['inserto1' => 0, 'resultado1' => $pdoExc->errorInfo[2]];
+        }
+    }
     
+    public function InsertarDetFacturaCompra($registro) {
+        try {
+           $query = " insert into detfacturacompra (";
+           $query .= "IdFacturaCompra,IdProducto)";
+           $query .= " values(:CodigoBarrasProducto1,:CodigoBarrasProducto2);";
+
+            $inserta = $this->Conexion->prepare($query);
+            session_start();
+
+            $IdFacturaCompra = $_SESSION['CodigoBarrasProducto1'];
+            $IdProducto = $_SESSION['CodigoBarrasProducto2'];
+            $inserta->bindParam(':CodigoBarrasProducto1', $registro['IdFacturaCompra']);
+            $inserta->bindParam(':CodigoBarrasProducto2' , $registro['IdProducto']);
+
+            $insercion = $inserta->execute();
+
+            $clavePrimariaConQueInserto = $this->Conexion->lastInsertId();
+
+
+
+            return ['inserto1' => 1, 'resultado1' => $clavePrimariaConQueInserto];
+        } catch (PDOException $pdoExc) {
+            return ['inserto1' => 0, 'resultado1' => $pdoExc->errorInfo[2]];
+        }
+    }
     
 }

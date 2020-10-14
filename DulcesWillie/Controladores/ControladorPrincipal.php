@@ -58,6 +58,9 @@ class ControladorPrincipal {
             case "Movimiento":
                 $Movimiento = new MovimientoMenuControlador($this->datos);    
                 break;
+                case "ProductoComprar":
+                $ProductoComprar = new ProductoControlador($this->datos);    
+                break;
 
             //-----------------------------------------------
             //--------------Tabla TipoCago------------------
